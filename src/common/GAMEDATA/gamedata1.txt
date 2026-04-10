@@ -1,0 +1,2067 @@
+{
+  "version": "1.0",
+  "defaultLabel": "start",
+  "labels": {
+    "start": [
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_00.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/empty.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "……吾等所望，那七声的哀叹。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "……吾等犹记，杰里科的古则。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "连接密码验证成功。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "什亭之箱",
+          "content": "欢迎连接【什亭之箱】，老师。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": ""
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_13.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_View_Kivotos.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CityDowntown.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_DesertResidence_Night.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_Wilderness_Night.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_01.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "???",
+          "content": "……这是我的失误。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "我的选择，和因它发生的一切。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_08.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_09.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "直到最后，迎来了这样的结局，我才明白您是对的……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_White.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_07.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "……我知道，事到如今再来说这些，挺厚脸皮的。但还是拜托您了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "老师。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "我想，您一定会忘记我说过的这些话，不过……没关系。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "因为就算您什么都不记得了，在相同的情况下，应该还是会做那样的选择吧……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_19.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "所以……重要的不是经历，是选择。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "很多很多，只有您才能做出的选择。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_Trinity_01.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_Gehenna_02_Letter.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_Gehenna_03_Letter.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_Gehenna_01_Letter.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_Abydos_01_Letter.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_07.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "我们以前聊过……关于背负责任之人的话题吧。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "我当时不懂……但是现在，我能理解了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "身为大人的责任与义务。以及在其延长线上的，您所作的选择。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "甚至还有，您做出选择时的那份心情。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "……所以，老师……您是我唯一可以信任的大人，我相信您一定能找到，通往这扭曲的终点所截然不同的……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "另一种结局的正确选项。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "所以，老师，请您一定要……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "刺耳的声音",
+          "content": "……老师……醒醒"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "刺耳的声音",
+          "content": "老师，请醒一醒。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "刺耳的声音",
+          "content": "老师！！！！！！！！！！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/shale/BG_UpperOffice.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "……"
+        }
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "……？",
+              "targetLabel": "label_1"
+            }
+          ]
+        }
+      }
+    ],
+    "label_1": [
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/shale/BG_UpperOffice.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "看来您真的很累，只是请您在这里稍等一会儿，没想到却睡得那么沉，怎么叫都不醒。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "该不会还做梦了吧。请快清醒一些，集中一下精神……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "我再向您传达一遍现在的情况。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "jump"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "我叫七神凛，是联合都市【基沃托斯】联邦理事会的干事。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "而您应该就是我们邀请到这里来的……老师吧。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "我说“应该”，是因为我也不太清楚老师您具体是怎么来到这里的。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……想必您也一头雾水，我能理解。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "现状如此，我表示遗憾。但还是请您先随我来。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "有件事情，必须请老师去完成。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "可以说是关乎联合都市命运的……非常重要的事。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "跟上去",
+              "targetLabel": "label_2"
+            }
+          ]
+        }
+      }
+    ],
+    "label_2": [
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_16.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "嗡嗡嗡嗡嗡嗡——"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "欢迎来到基沃托斯，老师。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "基沃托斯是由数千所学院聚合而成的超级大型联合都市。也是老师今后工作的地方。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "这里诸多事物可能都和老师以前所在的地方不同，所以刚开始适应起来应该不太容易……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "不过既然是老师您，想来应该不用我操心吧。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "毕竟，您是那位联邦理事会长选中的人。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……这件事稍后我会向您详细解释的。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "电梯",
+          "content": "（叮——）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/shale/BG_ReceptionRoom.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（闹哄哄）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "给我等等，代理！可找到你了，我们等你很久了，快让联邦理事会长出来！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_02.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "……嗯？旁边这个大人是？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "首席执行官，等候您多时了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/qianxia/chinatsu_spr_02.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "千夏",
+          "content": "我们是来见联邦理事会长的。对现在这种情况，风纪委员长要求得到一个合理的解释。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_17.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "誒……被一群麻烦的人给缠上了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_14.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "各位专程到访的理事会、风纪委员会成员，以及个别空余时间较多的朋友们。大家好。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "各位闲……贵客于百忙之中莅临此地所为何事，我们也非常清楚。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "如今联合都市一片混乱，想必各位是来追究责任的……对吧？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "既然都知道，那倒是快点解决啊！你们不是联邦理事会吗？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "现在几千个学院自管区都陷入了混乱！连我们的风力发电厂都停机好几天了！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/qianxia/chinatsu_spr_01.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "千夏",
+          "content": "而且还有消息说，有些关押在联邦矫正所的人员逃了出来。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/suzumi_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "铃美",
+          "content": "最近，我们的成员在路上被不法分子袭击的频率也急剧上升。\n治安越来越难维持了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "除了坦克和直升机，还有不知道从哪弄来的武器，非法流通量也增加了2000%以上。这样下去，我们的正常生活都会出问题的。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "都这种时候了，联邦理事会会长到底在干什么？好几周都不见人！让我见会长！现在，马上！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "唔……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "联邦理事会会长并不在席。老实说，现已去向不明"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_06.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "欸？！\n"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/qianxia/chinatsu_spr_02.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "千夏",
+          "content": "……！！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "果然那个传闻是……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "从结果来说，由于【圣所之塔】的最高管理者已不在位，所以现在的联邦理事会失去了行政控制权。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "虽然我们一直在尝试绕开认证……但是至今都没找到合适的方法，直到刚才……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "那您的意思是，现在找到方法了吗？首席执行官。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "没错。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "这位老师应该就是能解决问题的人。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "……哎？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/qianxia/chinatsu_spr_02.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "千夏",
+          "content": "……？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_01.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "就是这位？"
+        }
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“我？”",
+              "targetLabel": "label_3"
+            }
+          ]
+        }
+      }
+    ],
+    "label_3": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "等一下，说起来，这个老师到底是谁？为什么会在这儿？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "看起来不像基沃托斯本地人……原来是老师啊。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "是的。这位老师，以后会在基沃托斯工作，由联邦理事会长特别指定。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "下落不明的联邦理事会长所指定的人……？这也太乱套了吧……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "向所有人问好",
+              "targetLabel": "label_4"
+            }
+          ]
+        }
+      }
+    ],
+    "label_4": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_02.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "您，您好，老师。我是千禧年科技的……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "诶，不对，现在打什么招呼呀……！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_14.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "不用理会那个吵闹的人。我们继续……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "你说谁吵？！我，我叫早濑优香！老师，请一定要记住了！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……联邦理事会长设立了一个社团。原本老师来这里，是为了担任那个社团的顾问。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "社团名为……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "【联邦搜查设 沙勒】"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "他并不只是单纯的社团，而是一个超常规的机构。同时因为隶属于联邦，所以基沃托斯的所有学院成员都可以加入，不受任何限制。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "并且还可以在各个自管区内进行战斗活动，不受任何制约。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "我们也不明白为何联邦理事会长会设立权力如斯的机关……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "沙勒的活动室地处外围，离这里大约30公里远。虽说现在是一栋空楼，但联邦理事会长早先已经命令我们把“某个东西”放在了那里的地下室。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "现在我必须要把老师带到那里去。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "桃可，我们现在需要一架可以直达沙勒活动室的直升机……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "桃可",
+          "content": "沙勒活动室？……啊啊，你说的是外围地区那个？那边现在可出了大事。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……大事？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "桃可",
+          "content": "那些从矫正所逃出来的人引起了骚乱。现在那儿成了战场欸。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_17.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……嗯？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "桃可",
+          "content": "她们对联邦理事会怀恨在心，就扇动当地不良少女带头闹事，搞得周围寸草不生。甚至还不知道从哪儿弄到了巡航坦克。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "桃可",
+          "content": "接下来好像是想占领联邦理事会的沙勒那栋建筑。好像那里有什么很重要的东西一样？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "桃可",
+          "content": "无所谓啦，反正那边早就一片狼藉了，也没什么大……\n啊，前辈，我中午点的外卖到了，再联系啊！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（通信中断）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_14.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "啧……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“你没事吧？”",
+              "targetLabel": "label_5"
+            },
+            {
+              "text": "“要不要深呼吸一下？”",
+              "targetLabel": "label_5"
+            }
+          ]
+        }
+      }
+    ],
+    "label_5": [
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……没事……出了点小问题，并无大碍。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "（盯着看）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "……？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "干……干嘛？为什么盯着我们看啊？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_14.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "刚好各位齐聚一堂，一个个不仅实力超群，而且还无所事事，这样我就安心了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_06.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "……欸？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_14.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "为了基沃托斯能够恢复正常，我现在迫切需要各位闲人的帮助。这就出发吧。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_06.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "哎？等一下？！去，去哪儿啊？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CityDowntown.jpg"
+        }
+      },
+      {
+        "type": "bg_ani",
+        "params": {
+          "name": "shakey"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "这，这是怎么了？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "我们凭什么跟这些人打啊！！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/qianxia/chinatsu_spr_02.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "千夏",
+          "content": "想要夺回圣所之塔的控制器，就必须先夺回那个活动室……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "这个我当然知道……！可我在千禧年也是算有头有面的理事会成员啊！怎么能干这种……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "唔……好疼！好疼啊！这些家伙用的是违法的空尖弹？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "小心点，优香。而且，空尖弹并没有违法。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "那以后在我们千禧年就算违法了！你看这都留疤了！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "别忘了我们还带着老师，多加注意吧。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "首要任务是保护老师。保证这一点之后在考虑夺回那栋建筑。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/qianxia/chinatsu_spr_02.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "千夏",
+          "content": "莲见小姐说得对。因为老师不是基沃托斯本地人，而是从别的地方来的……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "千夏",
+          "content": "千夏所以和我们不一样，也许只要一颗子弹就会威胁到老师的生命。大家都要注意了！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "我知道。老师，您不要上战场！我们战斗的时候，请您待在安全的地方！"
+        }
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“我来指挥，交给我吧”",
+              "targetLabel": "label_6"
+            },
+            {
+              "text": "“从现开始大家都听我指示。”",
+              "targetLabel": "label_6"
+            }
+          ]
+        }
+      }
+    ],
+    "label_6": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_06.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "诶，诶诶？！您要指挥我们战斗？也是……毕竟是老师……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "jump"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "好的，那从现在开始我们就听从老师的指示。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/qianxia/chinatsu_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "千夏",
+          "content": "确实，听老师的话可是我们理所应当的义务。拜托老师了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_00.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "jump"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "好，那就来打打看吧！"
+        }
+      },
+      {
+        "type": "warp",
+        "params": {
+          "path": "/common/GAMEDATA/gamedata2.txt"
+        }
+      }
+    ]
+  }
+}

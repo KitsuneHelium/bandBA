@@ -1,0 +1,64 @@
+<template>
+  <div class="load">
+    <image src="/common/main_page_img/ICON2.png" style="width: 336px;object-fit:none;"/>
+    <text class="title" style="font-size:20px;">Powered by {{ title }}</text>
+    <!-- 点击跳转详情页 -->
+    <!--<input class="btn" type="button" value="跳转到详情页" onclick="routeDetail" /> -->
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+
+export default {
+  // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
+  private: {
+    title: "VGE"
+  },
+
+// index页面的js
+onReady() {
+    // 页面加载完成，设置3秒定时器
+    setTimeout(() => {
+      // 调用框架的路由API跳转到main页面
+      router.replace({ 
+        uri: '/pages/main' // 请替换为你的main页面路径
+      });
+      // 或者使用 navigateTo 等方法
+    }, 1000); // 3000毫秒 = 3秒
+  },
+  
+onUnload() {
+    // 最佳实践：页面卸载时清除定时器，防止内存泄漏
+    if (this.timer) {
+      console.log('timer unloaded');
+      clearTimeout(this.timer);
+    }
+  }
+}
+</script>
+
+<style>
+.load {
+  background-color: black;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: white;
+  font-size: 36px;
+  text-align: center;
+}
+
+.btn {
+  width: 200px;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: #09ba07;
+  font-size: 20px;
+  color: #ffffff;
+}
+</style>

@@ -1,0 +1,2570 @@
+{
+  "version": "1.0",
+  "defaultLabel": "start",
+  "labels": {
+    "start": [
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": ""
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CityDowntown.jpg"
+        }
+      },
+      {
+        "type": "bg_ani",
+        "params": {
+          "name": "shakey"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "十字军1型……！是和我们组织制式坦克一样的型号。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "绝对是黑市上流通的！这些家伙大概是从PMC手上买来的！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "jump"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "那就等于是废铁咯，打烂掉也无所谓！上吧！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CityOffice.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/wakamo_mask_spr_Idle_01.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "趁那边忙活着……我就进去拜访下咯。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "哼哼哼♥"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CityDowntown.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "到了！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "嗯。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛-通话中",
+          "content": "活动室已成功夺回。我也即将抵达。在建筑的地下室集合吧。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_View_Schale.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/shale/BG_CraftChamber_Night.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/wakamo_mask_spr_Idle_01.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "唔……这到底是什么东西？完全被搞不明白。这样就算想毁掉也……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "……哎呀？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "遇到一个很可疑的人",
+              "targetLabel": "label_1"
+            },
+            {
+              "text": "打招呼",
+              "targetLabel": "label_1"
+            },
+            {
+              "text": "我去，大狐狸！！！！！",
+              "targetLabel": "label_1"
+            }
+          ]
+        }
+      }
+    ],
+    "label_1": [
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "哈？嗯……？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "唔……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "KitsuneHelium",
+          "content": "sis一见钟情发力了"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "啊，啊啊……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "失…失……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "失礼了！！！！！！！！！！！！！！（跑路）（滑动变阻器音效）"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“……？”",
+              "targetLabel": "label_2"
+            },
+            {
+              "text": "请输入文本",
+              "targetLabel": "label_2"
+            }
+          ]
+        }
+      }
+    ],
+    "label_2": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "让您久等了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……？发生什么事了吗？"
+        }
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“没有，没什么”",
+              "targetLabel": "label_3"
+            }
+          ]
+        }
+      }
+    ],
+    "label_3": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……噢。这里保管着会长留下的东西。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……幸运的是，东西完好无损。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_11.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……请您拿好。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "噢哟iPad（bushi",
+              "targetLabel": "label_4"
+            }
+          ]
+        }
+      }
+    ],
+    "label_4": [
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "没错，这就是会长给老师留下的东西，【什亭之箱】。"
+        }
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "……",
+              "targetLabel": "label_5"
+            }
+          ]
+        }
+      }
+    ],
+    "label_5": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/shale/BG_CraftChamber_Night.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "\n看起来就像是一个普通的平板电脑，但其实根本不知道它是什么东西。制造公司、操作系统、硬件架构以及运作机制，全都无法确认。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "会长说过，这【什亭之箱】是属于老师的。还告诉我，您应该可以用这个恢复圣所之塔的控制权。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "我们无法启动这个东西，但是老师您可不可以呢，还是说……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……我的工作到此为止，之后就看老师您的了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "为了不妨碍到您，我暂且离开。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "……"
+        }
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "启动【什亭之箱】",
+              "targetLabel": "label_6"
+            }
+          ]
+        }
+      }
+    ],
+    "label_6": [
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_00.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "请输入系统连接密码。"
+        }
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "输入脑海中浮现的文本",
+              "targetLabel": "label_7"
+            }
+          ]
+        }
+      }
+    ],
+    "label_7": [
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "……吾等所望，那七声的哀叹。\n……吾等犹记，杰里科的古则。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "……\n密码验证成功。\n当前连接人员：[Undefined]\n已确认。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "欢迎连接【什亭之箱】，老师。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "启动前引导程序将从内存中释放。\n正在引导。\nboot option: ARONA .\nboot with startup has been loaded. from dir \"****\".\nbooting..."
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_White.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/BG_AronaRoom.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_Arona.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "(陌生的教室里，有一个女孩正趴在桌子上打瞌睡。）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "呼呼……Zzz"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "唔，蜂蜜蛋糕……比起草莓牛奶……还是香蕉牛奶更配……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "嘿嘿……还剩好多啊……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "摇醒她",
+              "targetLabel": "label_78"
+            },
+            {
+              "text": "戳一下她的脸颊",
+              "targetLabel": "label_8"
+            }
+          ]
+        }
+      }
+    ],
+    "label_8": [
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（戳）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "唔呀……还没呢……要细嚼慢咽……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（戳，戳）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "啊嗯，但是……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg_ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（戳，戳，戳）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "……呜呜呜嗯！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "goto",
+        "params": {
+          "label": "label_10"
+        }
+      }
+    ],
+    "label_78": [
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "唔……呜啊啊啊！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "goto",
+        "params": {
+          "label": "label_10"
+        }
+      }
+    ],
+    "label_10": [
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（起身）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/BG_AronaRoom.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_23.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "（睡眼惺忪）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_26.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "唔呀……干嘛呀……啊呀？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_04.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "啊呀，啊呀呀……咦？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_16.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "诶，咦？咦咦？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_28.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakey"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "老，老师？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_16.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "居然能进到这个空间，难，难道您就是老师……？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“是啊”",
+              "targetLabel": "label_11"
+            },
+            {
+              "text": "“你是谁”",
+              "targetLabel": "label_11"
+            }
+          ]
+        }
+      }
+    ],
+    "label_11": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_28.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "jump"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "呜，哇啊啊？！是真的诶？！已经这个时间了？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_18.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "呜啊，哇啊啊？冷静点，冷静点……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "嗯……那个……啊，对了！先做个自我介绍吧！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "log",
+          "content": "[1000.1.1-00:00:03] kernel:user arona executed su,but failed.Err-127\n[1000.1.1-00:00:04] kernel:user arona executed sudo -i.\n[1000.1.1-00:00:05] kernel:user arona executed uname -a.\n\n"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "我叫阿洛娜。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "是常驻在【什亭之箱】里的系统管理员兼主操作系统，以后也会作为助理帮助老师！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_11.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "终于见到您了！我在这里已经等了老师很久，很——久了！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“难道不是一直在睡觉？”",
+              "targetLabel": "label_12"
+            }
+          ]
+        }
+      }
+    ],
+    "label_12": [
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_16.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "啊，呃……当，当然偶尔也会打个瞌睡什么的……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“也请你多多指教。”",
+              "targetLabel": "label_13"
+            }
+          ]
+        }
+      }
+    ],
+    "label_13": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_11.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "嗯！请多多关照！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_99.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "log",
+          "content": "[0000.1.1-00:02:23] kernel:user arona executed cat /etc/version."
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "现在我身体的版本还很低……尤其是声带部分，还需要继续完善……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "不过今后，我会在各个方面帮助老师的！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "啊，对了！虽说只是走个形式，不过我们还是来进行一下生物识别吧🎵"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "唔……有点不好意思，但这是规矩，没办法。能靠近我一点吗？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "再近一点。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_Arona_03.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_Arona3_01.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "来，老师，用您的手指碰一下我的手指吧。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（轻推 w 以接近手指）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_Arona2_02.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "嘿嘿，是不是很像拉钩起誓呀？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_Arona2_04.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "哈？您说更像科幻电影里的名场面？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_Arona2_03.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "其实这样做是为了确认老师的生物信息——指纹！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "在画面上落下指纹后，我会用眼睛确认……很快就行！您别不信，我视力可好啦。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_Arona_02.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "我来看看……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "log",
+          "content": "[0000.1.1-00:19:32] kernel:user arona tried to use the camera -dev03\n[0000.1.1-00:19:33] kernel:user arona tried to use the camera -dev04\n\n"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "（唔……看不太清……进程被杀掉了？）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "（……哎，差不多就行了吧。）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/BG_AronaRoom.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_11.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "jump"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "……好啦，确认完毕！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_04.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "诶？让我认真点？感觉有点敷衍？\n呃……我很认真的！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_28.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "您说最近的机器指纹识别都是……自动的？唉，1秒都不用？\n唔，我是没那么高端（并非"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_18.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "但，但就算没有那种功能，阿洛娜也能帮上您的！我目测就够够的啦！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_28.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "呜呜唔……（完全不相信我诶）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "……唔唔（泪汪汪）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_18.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "那您去找那个功能先进的系统就好了呗！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "说只是开玩笑，然后哄她",
+              "targetLabel": "label_14"
+            }
+          ]
+        }
+      }
+    ],
+    "label_14": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "嘤……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（哄了她好久）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/BG_AronaRoom.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_99.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "嗯……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_31.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "原来如此……老师的情况我大概了解了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "联邦理事会长下落不明，所以也就失去了控制基沃托斯圣所之塔的方法……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "虽然基沃托斯的信息我掌握得不少……但对联邦理事会长却一无所知。包括她是谁，和为什么会失踪……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "……但是，圣所之塔的问题，我应该能想办法解决。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“那就拜托你了，阿洛娜”",
+              "targetLabel": "label_15"
+            }
+          ]
+        }
+      }
+    ],
+    "label_15": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_03.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "jump"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "嗯，好的。那我就开始修复圣所之塔的连接权限了！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "请坐和放宽~"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "log",
+          "content": "[0000.1.1-00:48:02] kernel:user arona sent BB 17 F2 D3 38 59 7E 3D FF 30 A1 02 01 A1 00 FF 00 00 00 00 02 to unknow device devF8."
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/shale/BG_CraftChamber_Night.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "(嗡——）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/shale/BG_CraftChamber.jpg"
+        }
+      },
+      {
+        "type": "bg_ani",
+        "params": {
+          "name": "shakey"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/BG_AronaRoom.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "嗯……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_22.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "成功获取圣所之塔的超级用户权限……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "老师。圣所之塔的控制权已经顺利收回。\n现在的圣所之塔由我阿洛娜全权掌控。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_25.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "也就是硕，整个基沃托斯都在老师掌心里啦！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“把控制权移交至联邦理事会。”",
+              "targetLabel": "label_16"
+            }
+          ]
+        }
+      }
+    ],
+    "label_16": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_02.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "……您确定要这么做吗？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_20.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "好的，现在把圣所之塔的控制权移交到联邦理事会！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/shale/BG_CraftChamber.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……好的，明白了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "已确认获得圣所之塔的控制权。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "以后就可以像联邦理事会长在的时候一样进行行政管理了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "幸苦了，老师。\n我代表联邦理事会诚挚地感谢您阻止了发生在基沃托斯的混乱。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "今后我们会追查和围剿那些攻击过这里的不良少女和受处分人员，所以请您不必担心。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "那么，【什亭之箱】已经移交给您，我该做的也完成了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……啊，还有一件事。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "请跟我来。我来介绍一下【联邦搜查社 沙勒】。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_02.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "这里是沙勒的主厅。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "之前控制了很久，现在终于迎来主人了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_03.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "而这里是是沙勒的活动室。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "老师可以在这里开始您的工作。"
+        }
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“那我该做些什么？”",
+              "targetLabel": "label_17"
+            }
+          ]
+        }
+      }
+    ],
+    "label_17": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……沙勒是一个只有权限，没有目标的组织。所以并不会强制您……要去做一些什么事情。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "您不仅可以自由出入基沃托斯任何学院的自管区，而且只要是您看中的人才，不管所处何处，都可以让其加入沙勒……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "很有意思是吧。明明叫做搜查社，但是关于搜查这一块，联邦理事会长却没有特别提及过。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "一言以蔽之……老师可以做任何想做的事。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_06.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……虽然我很想当面询问，但是联邦理事会长依旧下落不明。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "我们一直都在竭尽全力寻找她，所以暂时没有余地应对发生在基沃托斯各地的问题。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "现在，联邦理事会依旧在收到各种各样的投诉……还有诸多申请援助物资、要求改善环境、对不及格考生的特别辅导、寻求社团支援等等等等……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/rin/rin_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "……而【沙勒】拥有大量的自由时间，说不定也能帮助解决一部分棘手的问题。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "相关的文件我已经在老师桌上放了很多。有空的时候，请您不妨过目一下。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "一切都由老师您自有定夺。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛",
+          "content": "那么接下来就请老师自便了。如有需要，我会再联系你。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": ""
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_00.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/BG_BuildingFrontGate.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "嗯。已经确认联邦理事会重新得到圣所之塔的控制权了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "若藻已经逃到自管区了……不过应该马上就可以抓到吧。那我们就先到这里。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "剩下的就交给对应负责人吧。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_07.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "幸苦了，老师。这次您的活跃表现估计要传遍基沃托斯了，说不定还会立刻登上热搜哦？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“大家都幸苦了。”",
+              "targetLabel": "label_18"
+            }
+          ]
+        }
+      }
+    ],
+    "label_18": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "那我们今天就先到别吧，这几天有空的话，请您一定要来崔尼蒂看看，老师。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/qianxia/chinatsu_spr_07.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "千夏",
+          "content": "我也会把今天的事报告给风纪委员长。以后您如果来歌赫娜，请一定要来找我们。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_07.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "如果您来千禧年科技的话，我们应该还能见面吧？那回头见了，老师！"
+        }
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "回到沙勒办公室",
+              "targetLabel": "label_19"
+            }
+          ]
+        }
+      }
+    ],
+    "label_19": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CityOffice.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/wakamo_mask_spr_Idle_01.png"
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "诶……这就有点伤脑筋了……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "嗯哼……嗯哼哼。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "jump"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "嗯哼哼哼哼哼哼哼♥"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/BG_AronaRoom.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_13.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "啊哈哈……感觉像一直忙得晕头转向……不过现在应该暂时告一段落了吧，幸苦您啦。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“阿洛娜也幸苦了！”",
+              "targetLabel": "label_20"
+            }
+          ]
+        }
+      }
+    ],
+    "label_20": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_11.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "嗯！但是，真正麻烦的还在后头呢。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_25.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "从现在开始，我们要一起解决基沃托斯人们面临的各种问题……！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "一些看起来很简单，但其实很不好办……却很重要的事情。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/arona/arona_spr_03.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "那么老师，以后基沃托斯和沙勒就拜托您了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "那么现在就开始我们【联邦搜查社 沙勒】的第一个正式任务吧！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": ""
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      }
+    ]
+  }
+}

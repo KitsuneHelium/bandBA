@@ -1,0 +1,1 @@
+show:0;option:0;chapter:"/common/GAMEDATA/gamedata.txt"

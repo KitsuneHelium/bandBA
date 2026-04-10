@@ -1,0 +1,63 @@
+{
+  "package": "vge.blue.archive",
+  "name": "bandBA",
+  "versionName": "1.5.3",
+  "versionCode": 1,
+  "minPlatformVersion": 1000,
+  "icon": "/common/logo.png",
+  
+  "deviceTypeList": [
+    "watch"
+  ],
+  "features": [
+    {
+      "name": "system.prompt"
+    },
+    {
+      "name": "system.path"
+      
+    },
+    {
+      "name": "system.file",
+      "params": {
+        "mode": "readwrite"
+      }
+    },
+    {
+      "name": "system.router"
+      
+    },
+    {
+      "name": "system.app"
+      
+    }
+  ],
+  "config": {
+    "logLevel": "log",
+    "designWidth": 336
+  },
+  "router": {
+    "entry": "pages/index",
+    "pages": {
+      "pages/index": {
+        "component": "index"
+      },
+      "pages/chapter": {
+        "component": "chapter"
+      },
+      "pages/detail": {
+        "component": "detail"
+      },
+      "pages/gaming": {
+        "component": "gaming"
+      },
+      "pages/main": {
+        "component": "main"
+      },
+      "pages/test": {
+        "component": "test"
+      }
+    }
+  }
+  
+}

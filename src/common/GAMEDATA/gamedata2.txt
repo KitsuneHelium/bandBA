@@ -1,0 +1,252 @@
+{
+  "version": "1.0",
+  "defaultLabel": "start",
+  "labels": {
+    "start": [
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CityDowntown.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/suzumi_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "铃美",
+          "content": "总感觉刚才的战斗好像比平时轻松很多……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_02.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "……你也这么觉得？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "多亏有老师的指挥，我们的战斗才比平时顺利。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_00.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "原来如此……这就是老师的能力……\n嗯，毕竟是联邦理事会长选中的人，也是理所应当的吧……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/lianjian/hasumi_spr_02.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "莲见",
+          "content": "那之后的战斗也拜托您了，老师。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/BG_CityTown.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/yuuka/yuuka_spr_05.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "优香",
+          "content": "沙勒的活动室就在前面！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛-通讯中",
+          "content": "引起这场骚乱的人身份现已查明。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/wakamo_mask_spr_Idle_01.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛-通讯中",
+          "content": "若藻。被百鬼夜行联合处分后，从矫正所越狱。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "凛-通讯中",
+          "content": "此人有很多类似前科，非常危险，请各位小心。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "呲呲……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CityOffice.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "……哎呀？联邦理事会好像没有亲自出马啊。哼哼，不过无所谓。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "虽然不知道那栋建筑里到底有什么，但只要是联邦理事会重视的东西……我就忍不住想去毁掉呢……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "若藻",
+          "content": "啊……好久没有觉得这么期待了，嗯哼哼哼♥"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "warp",
+        "params": {
+          "path": "/common/GAMEDATA/gamedata3.txt"
+        }
+      }
+    ]
+  }
+}

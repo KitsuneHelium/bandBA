@@ -1,0 +1,244 @@
+<template>
+  <div class="main">
+    <stack class="stack">
+      <!-- 只需要一个image标签！ -->
+      <image 
+        class='title-img'
+        src="/common/bg.jpg"
+      />
+      
+      <swiper class="swp" indicator="false" index="1" loop="false" >
+        <!-- 中间内容完全不变 -->
+        <div class="scroll-container">
+          <scroll 
+            class="box" 
+            scroll-y="true" 
+            bounces="true"
+            style="scroll-snap-type: x mandatory; bottom:5px; align-items: center;"
+          >
+            <div style="width:100px;height:50px"> </div>
+            <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<新的开始>" onclick="new_start"></input>
+            <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<继续游玩>" onclick="start"></input>
+            <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<章节>" onclick="chapter"></input>
+            <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<鉴赏>" onclick="cg"></input>
+            <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<关于>" onclick="test"></input>
+            <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<退出>" onclick="b_exit"></input>
+            <div style="width:100px;height:50px"> </div>
+          </scroll>
+          <image 
+            class='head-img'
+            src='{{currentBg}}' 
+            style="opacity: {{bgOpacity}};"
+            onclick="fade"
+             />
+        </div>
+        <div>
+          <image 
+                  src='/common/main_page_img/ico.png' 
+                  style="position:absolute;width:336px; height:125px; object-fit: contain; top:350px; " 
+          />
+          </div>
+      </swiper>
+    </stack>
+  </div>
+</template>
+
+<script>
+import app from '@system.app' 
+import router from '@system.router'
+import file from '@system.file'
+
+export default {
+  data: {
+    pageClass: 'main page-next',
+    settings: {
+      bzz: false
+    },
+    // 单图方案只需要这两个变量！
+    currentBg: "/common/main_page_img/head.png", // 当前显示的背景图
+    bgOpacity: 1, // 背景图透明度
+    // 背景图列表（可以无限加）
+    bgList: [
+      "/common/main_page_img/head.png",
+      "/common/gaming/bg/cg/1.jpg",
+      "/common/gaming/bg/cg/2.jpg",
+      "/common/gaming/bg/cg/3.jpg",
+      "/common/gaming/bg/cg/4.jpg",
+      "/common/gaming/bg/cg/5.jpg",
+      "/common/gaming/bg/cg/6.jpg",
+      "/common/gaming/bg/cg/7.jpg",
+      "/common/gaming/bg/cg/8.jpg"
+    ],
+    currentBgIndex: 0 // 当前背景图索引
+  },
+  
+  fade() {
+    // 1. 第一步：淡出（transition会自动产生动画）
+    this.bgOpacity = 0;
+    
+    // 2. 等待淡出动画完成（时间和CSS里的transition-duration一致）
+    setTimeout(() => {
+      // 3. 切换到下一张图
+      this.currentBgIndex = (this.currentBgIndex + 1) % this.bgList.length;
+      this.currentBg = this.bgList[this.currentBgIndex];
+      
+      // 4. 等一帧确保图片加载完成，再淡入
+      setTimeout(() => {
+        this.bgOpacity = 1;
+      }, 16);
+    }, 200); // 这里的200必须和CSS里的动画时长一致
+  },
+
+  // 其他所有函数完全不变
+  onBackPress() {
+    this.alert("杂鱼~");
+  },
+  onShow() {
+    setTimeout(() => {
+      this.pageClass = 'main';
+    }, 10);
+  },
+  new_start(){
+    const resetData = {
+      version: "1.0",
+      timestamp: 0,
+      title: "新游戏",
+      core: {
+        label: "start",
+        index: 0,
+        globalVars: {},
+        scene: {
+          bg: "/common/main_page_img/bg.jpg",
+          chara: "/common/empty.png",
+          speaker: "",
+          content: "点击屏幕开始..."
+        }
+      },
+    historySnapshot: []
+    };
+      file.writeText({
+        uri: "internal://files/VGE/shared/userdata.txt",
+        text: JSON.stringify(resetData),
+      })
+      router.replace({
+        uri: 'pages/gaming',
+      })
+    },
+  start(){
+    router.replace({
+      uri: 'pages/gaming',
+    })
+  },
+  chapter(){
+    router.replace({
+      uri:'pages/chapter'
+    })
+  },
+  test(){
+    router.replace({
+      uri:'pages/test'
+    })
+  },
+  cg(){
+    router.replace({
+      uri:'pages/detail'
+    })
+  },
+  b_exit(){
+    this.$app.exit()
+  }
+}
+</script>
+
+<style>
+/* 基础样式保留 */
+.title-img {
+  width: 336px; height: 480px; object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* 核心：只需要这一行！自动产生透明度过渡动画 */
+  transition: opacity 200ms ease-in-out;
+}
+
+.head-img {
+  width:336px; height:236px; object-fit: contain; 
+  transition: opacity 200ms ease-in-out;
+}
+.swp {
+  position: absolute;
+  width: 336px;
+  height: 480px;
+}
+.btn {
+  margin: 10px;
+  margin-bottom: 20px;
+  top: 30px;
+  font-size: 36px;
+  width: 246px;
+  height: 60px;
+  font-weight: bold;
+  color: #0f0f0fcb;
+  background-color: rgba(255, 255, 255, 0.63);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 40px;
+  
+}
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000; /* 加上这行 */
+  transition: transform 300ms ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-next {
+  transform: translateX(100%);
+}
+.page-enter {
+  transform: translateX(0);
+}
+.page-exit {
+  transform: translateX(-100%);
+}
+
+.stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #000000; /* 这里设为黑色，也可以设为你喜欢的颜色 */
+}
+
+.scroll-container {
+  position: absolute;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+}
+
+.box {
+  left:18px;
+  top:150px;
+  align-self: center;
+  position: absolute;
+  flex-direction:column;
+  height: 330px;
+  width: 300px;
+}
+
+.scroll-item {
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 20px;
+  text-align: center;
+}
+</style>

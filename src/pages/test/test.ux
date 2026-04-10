@@ -1,0 +1,243 @@
+<template>
+    <div class="page">
+      <input type="button" class="btn" onclick="exit" value="<" />
+      <text class="title" style="color: white;margin-bottom: 10px;margin-top: 10px;">关于</text>
+      <div class="box">
+      <scroll style="flex-direction: column;" scroll-y="true" bounces="true">
+          <stack class="container">
+            <div class="bg-box"></div>
+            <image alt="/common/logo.png" class="chara-box {{charaAnimClass}}" ontouchstart="playJump" ontouchend="playShakeX"/>
+          </stack>
+        <text style="margin:10px;color:#fff;font-size:26px;">The BandBA Project</text>
+        <text style="margin:10px;color:#fff;font-size:20px;">VelaGameEngine版本:1.5.2</text>
+        <text style="margin:10px;color:#fff;font-size:20px;">It's Show Time版本:2.1</text>
+        <text style="margin:10px;color:#fff;font-size:20px;">制作者: KitsuneHelium</text>
+        <text style="margin:10px;color:#fff;font-size:20px;">技术支持：豆包、Vela快应用开发文档</text>
+        <text style="margin:10px;color:#fff;font-size:20px;">特别鸣谢：kivo.wiki , 豆包 , 还有每个正在使用该软件的用户。</text>
+        <text style="margin:10px;color:#fff;font-size:20px;">免责声明：bandBA由KitsuneHelium个人开发及维护，为非官方、非盈利的《蔚蓝档案》二次创作工具，旨在帮助玩家便捷制作、分享相关二次创作内容，后续将推进开源计划。</text>
+        <text style="margin:10px;color:#fff;font-size:20px;">本项目与Yostar、Nexon、Nexon Games无任何形式关联，不代表官方立场。项目所用全部文本、图片、音效等素材版权均归原作者所有，已严格合规使用基沃托斯古书馆（kivo.wiki，内容遵循CC BY-SA 4.0协议）提供的素材，使用行为完全符合该站点使用条例及原素材授权要求。</text>
+        <text style="margin:10px;color:#fff;font-size:20px;">《蔚蓝档案》官方相关素材版权归Nexon（MX studio）与Yostar（悠星）所有，用户使用需遵守官方同人创作指引；项目引用的第三方素材（含いしまり(@texteater)老师的免费光环模型）均遵循原作者授权声明；基沃托斯古书馆原创内容遵循对应CC协议。所有违规使用行为产生的责任均由使用者自行承担，与本项目无关。</text>
+        <text style="margin:10px;color:#fff;font-size:26px;">开源协议</text>
+        <text style="margin:5px;color:#fff;font-size:18px;padding-left:10px;">bandBA 是一款自由开源软件，您可以自由地使用、修改和重新分发它。</text>
+        <text style="margin:5px;color:#fff;font-size:18px;padding-left:10px;">• 源代码采用的协议</text>
+        <text style="margin:5px;color:#00bfff;font-size:22px;padding-left:10px;">GNU General Public License v3.0 (GPLv3)</text>
+        <text style="margin:5px;color:#fff;font-size:18px;padding-left:10px;">• 文档与原创素材采用的协议</text>
+        <text style="margin:5px;color:#00bfff;font-size:22px;padding-left:10px;">CC BY-SA 4.0</text>
+        <text style="margin:5px;color:#fff;font-size:18px;padding-left:10px;">Copyright (C) 2026 KitsuneHelium</text>
+        <text style="margin:10px;color:#fff;font-size:20px;">bandBA开放了捐赠渠道，一切捐赠均为自愿形式，这些资金将全部用于维护该项目以及开发更多好玩有趣的作品。</text>
+        <image alt="/common/qrcode.png" />
+        <div style="width:100px;height:10px"> </div>
+        <!-- <text class="debug-text">状态: {{charaAnimClass}}</text> -->
+        <!-- <div class="controls">
+          <input type="button" class="btn" onclick="playJump" value="跳跃" />
+          <input type="button" class="btn" onclick="playShakeX" value="抖动" />
+          <input type="button" class="btn btn-stop" onclick="stopAllAnimations" value="停止" />
+          
+        </div> -->
+      </scroll>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  import router from "@system.router";
+  
+  export default {
+    data: {
+      charaAnimClass: "",
+      animTimer: null
+    },
+    
+    exit(){
+        router.replace({
+            uri:"pages/main"
+        })
+    },
+    stopAllAnimations() {
+      if (this.animTimer) clearTimeout(this.animTimer);
+      this.charaAnimClass = "";
+    },
+  
+    playJump() {
+      this.stopAllAnimations();
+      this.charaAnimClass = "anim-jump-up";
+      this.animTimer = setTimeout(() => {
+        this.charaAnimClass = "anim-jump-down";
+        setTimeout(() => {
+          this.charaAnimClass = "";
+        }, 250);
+      }, 250);
+    },
+  
+    // ========== 核心修改：最后一步执行复位空动画 ==========
+    playShakeX() {
+      this.stopAllAnimations();
+      let count = 0;
+      const shake = () => {
+        if (count >= 4) { // 恢复原4次循环，不用提前终止
+          // 第一步：执行复位空动画（强制锁定到0px）
+          this.charaAnimClass = "anim-reset-x";
+          // 等空动画跑完（哪怕只有1ms，也能触发引擎复位）
+          setTimeout(() => {
+            this.charaAnimClass = "";
+          }, 10); // 极短时长，无感知但能触发复位
+          return;
+        }
+  
+        // 正常抖动循环：0(left)→1(right)→2(left)→3(right)
+        this.charaAnimClass = count % 2 === 0 ? "anim-shake-left" : "anim-shake-right";
+        count++;
+        this.animTimer = setTimeout(shake, 75);
+      };
+      shake();
+    }
+  }
+  </script>
+  
+  <style>
+  .title {
+  position: absolute;
+  top:15px;
+  right: 20px;
+  font-size: 36px;
+  font-weight: bold;
+  align-self: flex-start;
+}
+    .page {
+      background-image: url(/common/bg2.jpg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      background-color: #000000;
+      width: 100%;
+      height: 100%;
+    }
+  
+    .container {
+      display: flex;
+      width: 300px;
+      height: 150px;
+      background-color: #00000000;
+      overflow: hidden;
+    }
+  
+    .chara-box {
+      width: 120px;
+      height: 120px;
+      background-color: #00000000;
+      position: absolute;
+      bottom: 0px;
+      left: 90px;
+      transform: translateX(0px);
+      transform: translateY(0px);
+    }
+  
+    .bg-box {
+      width: 300px;
+      height: 200px;
+      background-color: #00000000;
+      left: 0px;
+      bottom: 0px;
+    }
+    .box {
+      top:80px;
+      border-radius: 24px;
+      height: 372px;
+      width: 300px;
+      flex-direction: column;
+      background-color: #0000006e;
+      
+    }
+    /* ========== 新增：复位空动画（核心） ========== */
+    @keyframes reset-x {
+      0%   { transform: translateX(0px); }
+      100% { transform: translateX(0px); }
+    }
+    .anim-reset-x {
+      animation-name: reset-x;
+      animation-duration: 10ms; /* 极短时长，无视觉感知 */
+      animation-iteration-count: 1;
+      animation-fill-mode: none;
+    }
+  
+    /* 跳跃动画 */
+    @keyframes jump-up {
+      0%   { transform: translateY(0px); }
+      100% { transform: translateY(-30px); }
+    }
+    .anim-jump-up {
+      animation-name: jump-up;
+      animation-duration: 100ms;
+      animation-timing-function: ease-out;
+      animation-iteration-count: 1;
+      animation-fill-mode: none;
+    }
+  
+    @keyframes jump-down {
+      0%   { transform: translateY(-30px); }
+      100% { transform: translateY(0px); }
+    }
+    .anim-jump-down {
+      animation-name: jump-down;
+      animation-duration: 100ms;
+      animation-timing-function: ease-in;
+      animation-iteration-count: 1;
+      animation-fill-mode: none;
+    }
+  
+    /* 抖动动画 */
+    @keyframes shake-left {
+      0%   { transform: translateX(0px); }
+      100% { transform: translateX(-15px); }
+    }
+    .anim-shake-left {
+      animation-name: shake-left;
+      animation-duration: 75ms;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+      animation-fill-mode: none;
+    }
+  
+    @keyframes shake-right {
+      0%   { transform: translateX(30px); }
+      100% { transform: translateX(0px); }
+    }
+    .anim-shake-right {
+      animation-name: shake-right;
+      animation-duration: 75ms;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+      animation-fill-mode: none;
+    }
+  
+    /* 按钮样式 */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 240px;
+    }
+    .btn {
+      top:10px;
+      left:10px;
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      font-size: 26px;
+      margin: 5px;
+      background-color: #000000a4;
+      color: #fdfdfd;
+      border-radius: 36px;
+      margin-bottom: 10px;
+    }
+  
+    .debug-text {
+      margin-top: 10px;
+      font-size: 10px;
+      color: #333;
+      background-color: #e0e0e0;
+      padding: 5px;
+      width: 220px;
+    }
+  </style>

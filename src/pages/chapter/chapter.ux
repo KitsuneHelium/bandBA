@@ -1,0 +1,235 @@
+<template>
+  <div class="page">
+        <!-- 内置章节文件 -->
+        
+        <input class="exit_btn" type="button" onclick="exit" value="<"/>
+        <text class="title" style="color: black;margin-bottom: 10px;margin-top: 10px;">主线故事</text>
+        <scroll class="box" scroll-y="true">
+        
+        
+        <div class="file-item">
+          <text class="file-name">序章-上</text>
+          <input class="select-btn" type="button" onclick="selectGamedata" value="选择"/>
+        </div>
+        <div class="file-item">
+          <text class="file-name">序章-中</text>
+          <input class="select-btn" type="button" onclick="selectGamedata2" value="选择"/>
+        </div>
+        <div class="file-item">
+          <text class="file-name">序章-下</text>
+          <input class="select-btn" type="button" onclick="selectGamedata3" value="选择"/>
+        </div>
+      
+        <!-- <div class="file-item">
+          <text class="file-name">gamedata.txt.egg</text>
+          <input class="select-btn" type="button" onclick="selectGamedataEgg" value="选择"/>
+        </div> -->
+    
+        <!-- 外置章节文件 -->
+        <!-- <text class="title" style="color: black;margin: 20px 0 10px 0;">外置章节文件</text>
+        <div class="scroll-container">
+          <scroll class="box" scroll-y="true">
+            <div class="file-item" for="{{file in outerFileList}}">
+              <text class="file-name">{{fileName(file.uri)}}</text>
+              <input class="select-btn" type="button" onclick="selectOuter" data-uri="{{file.uri}}" value="选择"/>
+            </div>
+            <text class="empty-tip" if="{{outerFileList.length === 0}}">暂无外置文件</text>
+          </scroll>
+        </div> -->
+        <!-- <text class="selected-tip" style="background-color:#ffffff9f;color: black;margin-top: 20px;font-size:20px;width:280px">当前选中：{{selectedChapter || '未选中'}}</text> -->
+        <text class="more" style="color: black;">将来会有更多的剧情加入...</text>
+        <div style="width:100px;height:20px"> </div>
+      </scroll>
+      
+  
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+import file from "@system.file"
+
+export default {
+  data: {
+    selectedChapter: "/common/GAMEDATA/gamedata.txt",
+    userChapterUri: 'internal://files/VGE/shared/userchapter.txt',
+    outerDirUri: 'internal://files/VGE/shared/GAMEDATA/',
+    outerFileList: []
+  },
+
+  onShow() {
+    // 加载外置文件
+    file.list({
+      uri: this.outerDirUri,
+      success: (res) => {
+        this.outerFileList = res.fileList.filter(item => !item.uri.endsWith('/'))
+      },
+      fail: () => {
+        this.outerFileList = []
+      }
+    })
+  },
+
+  // 内置1
+  selectGamedata() {
+      this.selectedChapter = "/common/GAMEDATA/gamedata.txt";
+    file.writeText({
+      uri: this.userChapterUri,
+      text: "/common/GAMEDATA/gamedata1.txt",
+      encoding: 'utf-8',
+      success: () => {alert('选好了！');this.go()},
+      fail: () => alert('失败了')
+    })
+  },
+  selectGamedata2() {
+      this.selectedChapter = "/common/GAMEDATA/gamedata2.txt";
+    file.writeText({
+      uri: this.userChapterUri,
+      text: "/common/GAMEDATA/gamedata2.txt",
+      encoding: 'utf-8',
+      success: () => {alert('选好了！');this.go()},
+      fail: () => alert('失败了')
+    })
+  },
+  selectGamedata3() {
+      this.selectedChapter = "/common/GAMEDATA/gamedata3.txt";
+    file.writeText({
+      uri: this.userChapterUri,
+      text: "/common/GAMEDATA/gamedata3.txt",
+      encoding: 'utf-8',
+      success: () => {alert('选好了！');this.go()},
+      fail: () => alert('失败了')
+    })
+  },
+
+  // 内置2
+  // selectGamedataEgg() {
+  //     this.selectedChapter = "/common/GAMEDATA/gamedataegg.txt";
+  //   file.writeText({
+  //     uri: this.userChapterUri,
+  //     text: "/common/GAMEDATA/gamedataegg.txt",
+  //     encoding: 'utf-8',
+  //     success: () => {alert('选好了！');this.go()},
+  //     fail: () => alert('失败了')
+  //   })
+  // },
+
+  // 外置
+  selectOuter(e) {
+    const uri = e.target.getAttribute('data-uri');
+    this.selectedChapter = uri;
+    file.writeText({
+      uri: this.userChapterUri,
+      text: uri,
+      encoding: 'utf-8',
+      success: () => alert('选好了！'),
+      fail: () => alert('失败了')
+    })
+  },
+
+  // 提取外置文件名
+  fileName(uri) {
+    const parts = uri.split('/')
+    return parts[parts.length - 1] || '未知文件'
+  },
+
+  exit() {
+    router.replace({ uri: "pages/main" })
+  },
+  go() {
+    router.replace({ uri: "pages/gaming" })
+  }
+}
+</script>
+
+<style>
+.page {
+  background-image: url(/common/bg.jpg);
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  position: absolute;
+  top:15px;
+  right: 20px;
+  font-size: 36px;
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+.scroll-container {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.box {
+  top:80px;
+  border-radius: 36px;
+  height: 400px;
+  width: 300px;
+  flex-direction: column;
+  background-color: #ffffff00;
+  
+}
+
+.file-item {
+  width: 300px;
+  height: 80px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 0 15px;
+  margin-bottom: 10px;
+  border-radius: 36px;
+}
+
+.file-name {
+  color: rgb(44, 44, 44);
+  font-size: 16px;
+}
+
+.select-btn {
+  width: 80px;
+  height: 45px;
+  background-color: rgb(0, 153, 255);
+  color: rgba(255, 255, 255, 0.897);
+  border-radius: 20px;
+  font-size: 24px;
+}
+
+.empty-tip {
+  color: rgb(44, 44, 44);
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.more {
+  font-size: 14px;
+  margin: 20px 0;
+}
+
+.exit_btn {
+  top:10px;
+  left:10px;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  font-size: 26px;
+  margin: 5px;
+  background-color: #ffffffa4;
+  color: #000000;
+  border-radius: 36px;
+  margin-bottom: 10px;
+}
+.go_btn {
+  width: 100px;
+  height: 40px;
+  background-color: #666;
+  color: white;
+  border-radius: 4px;
+  font-size: 16px;
+}
+</style>

@@ -1,0 +1,436 @@
+<template>
+    <div class="page">
+        <swiper class="swiper">
+            <stack class="stack">
+                <!-- 背景图：加默认图，避免白屏 -->
+                <image 
+                src="{{currentState.bg}}" 
+                style="width: 100%; height: 100%; object-fit: cover;"
+                />
+                <!-- 调试文本：页面上直接显示错误/日志，不用看控制台 -->
+                <text class="debug-text" show="{{debugTF}}">{{debugInfo}}</text>
+                <!-- 按钮和对话文本 -->
+                <image src="{{currentState.chara}}" class="chara-img" onclick="txt_cl" style="object-fit: contain"/>
+                <image src="/common/gaming/bt.png" class="tx-img" onclick="txt_cl" />
+                <!-- 新增：手动保存/恢复存档按钮（可选，可隐藏） -->
+                
+                <text class="cname-text">{{currentState.cname}}</text>
+                <!-- 对话文本：保留原有绑定 -->
+                <text class="txt-text">{{currentState.txts}}</text>
+            </stack>
+            <stack>
+                <image 
+                src="{{currentState.bg}}" 
+                style="width: 100%; height: 100%; object-fit: cover;"
+                />
+                <!--Debug开关-->
+                <scroll class='game_settings' scroll-y="true">
+                    <text class='is_debug'>开启调试日志？</text>
+                    <switch checked="{{debugTF}}" class="debug_switch" @change="DebugLogTF"></switch>
+                    <image src="/common/gaming/exit.png" class="exit_btn" onclick="exit_out" />
+                    <image src="/common/gaming/gooback.png" class="goback_btn" onclick="goback" />
+                </scroll>
+                <text class="debug-text">{{debugInfo}}</text>
+                <image src="/common/gaming/save_btn.png" class="save-btn" onclick="saveCurrentState" />
+                <image src="/common/gaming/load_btn.png" class="load-btn" onclick="manualLoadSave" />
+            </stack>
+        </swiper>
+    </div>
+  </template>
+  
+  <script>
+  import router from '@system.router'
+  import file from '@system.file'
+  
+  export default {
+    data: {
+      otherClass: "",
+      currentState: {
+        show: 0,
+        option: 0, // 新增：存储当前option值
+        chara: "/common/empty.png",
+        bg: "/common/logo.png", 
+        cname: "",
+        txts: "default"
+      },
+      debugTF: false,
+      scriptLines: [],
+      currentLine: 0,
+      isWaiting: false,
+      debugInfo: "初始化中...",
+      // 存档路径（固定为USERDATA下的userdata.txt）
+      saveFilePath: "internal://files/VGE/shared/userdata.txt"
+    },
+    goback(){
+        if(this.currentState.show > 0){
+
+        }
+    },
+    exit_out(){
+        router.replace({
+            uri: "pages/main"
+        })
+    },
+    onReady() {
+      console.log("===== 页面开始初始化 =====");
+      this.debugInfo = "开始读取game.data...";
+      // 1. 先读取游戏存档
+      this.readSaveFile();
+      // 2. 再读取并解析游戏脚本
+      this.loadAndParseGameData();
+    },
+    DebugLogTF(){
+        this.debugTF = e.checked
+    },
+    // 新增：读取存档文件（/common/USERDATA/userdata.txt）
+    readSaveFile() {
+      this.debugInfo = "读取存档中...";
+      const readTimeout = setTimeout(() => {
+        this.debugInfo = "存档读取超时，从头开始";
+        console.warn("存档读取超时");
+      }, 3000);
+  
+      file.readText({
+        uri: this.saveFilePath,
+        encoding: "utf8",
+        success: (res) => {
+          clearTimeout(readTimeout);
+          const saveContent = res.text.trim();
+          console.log("读取存档成功：", saveContent);
+          
+          // 解析存档格式：show:x;option:y;
+          const showMatch = saveContent.match(/show:(\d+);/);
+          const optionMatch = saveContent.match(/option:(\d+);/);
+          
+          if (showMatch && optionMatch) {
+            this.currentState.show = Number(showMatch[1]);
+            this.currentState.option = Number(optionMatch[1]);
+            this.debugInfo = `存档读取成功：show=${this.currentState.show}, option=${this.currentState.option}`;
+          } else {
+            this.debugInfo = "存档格式错误，从头开始";
+            console.error("存档格式错误：", saveContent);
+          }
+        },
+        fail: (err) => {
+          clearTimeout(readTimeout);
+          this.debugInfo = "无存档文件，从头开始";
+          console.log("存档文件不存在：", err.message);
+        }
+      });
+    },
+    // 原有：读取并解析game.data
+    loadAndParseGameData() {
+      const gameDataPath = "/common/GAMEDATA/gamedata.txt";
+      console.log("game.data路径：", gameDataPath);
+      this.debugInfo = "路径：" + gameDataPath;
+  
+      const readTimeout = setTimeout(() => {
+        this.debugInfo = "读取超时！路径：" + gameDataPath;
+        console.error("读取game.data超时");
+      }, 3000);
+  
+      file.readText({
+        uri: gameDataPath,
+        encoding: "utf8",
+        success: (res) => {
+          clearTimeout(readTimeout);
+          console.log("读取game.data成功，内容：", res.text);
+          this.debugInfo = "读取成功，开始解析..." + res.text;
+          this.parseScript(res.text);
+          // 解析完成后，先恢复存档位置再执行
+          this.recoverFromSave();
+        },
+        fail: (err) => {
+          clearTimeout(readTimeout);
+          const errMsg = "读取失败：" + err.message + " | 错误码：" + err.code;
+          console.error(errMsg);
+          this.debugInfo = errMsg;
+          this.currentState.txts = "脚本加载失败，请检查路径/权限";
+        }
+      });
+    },
+    Save(){
+        file.writeText({
+            uri: 'internal://files/VGE/shared/userdata.txt',
+            text: "show:"+this.currentState.show+";"+"option:"+this.currentState.option,
+            success: function() {
+                console.log('handling success')
+                this.debugInfo = 'handling success'
+            },
+            fail: function(data, code) {
+                console.log(`handling fail, code = ${code}`)
+                this.debugInfo = `handling fail, code = ${code}`
+            }
+        })
+    },
+    // 新增：根据存档恢复到指定位置
+    recoverFromSave() {
+      // 如果存档不是初始值，查找匹配的指令位置
+      if (this.currentState.show !== 0 || this.currentState.option !== 0) {
+        this.debugInfo = "开始恢复存档位置...";
+        let targetLine = -1;
+        let findShow = false;
+  
+        // 遍历所有指令，找到匹配的show和option
+        for (let i = 0; i < this.scriptLines.length; i++) {
+          const cmd = this.scriptLines[i];
+          // 先匹配show
+          if (cmd.type === "set" && cmd.key === "show" && cmd.value === this.currentState.show) {
+            findShow = true;
+            targetLine = i;
+          }
+          // 找到show后，匹配option
+          if (findShow && cmd.type === "set" && cmd.key === "option" && cmd.value === this.currentState.option) {
+            targetLine = i;
+            break;
+          }
+        }
+  
+        // 定位到目标行执行
+        if (targetLine !== -1) {
+          this.currentLine = targetLine;
+          this.debugInfo = `恢复到第${targetLine}行：show=${this.currentState.show}, option=${this.currentState.option}`;
+        } else {
+          this.debugInfo = "未找到匹配位置，从头开始";
+          this.currentLine = 0;
+        }
+      } else {
+        this.currentLine = 0;
+      }
+      // 执行脚本
+      this.executeNextLine();
+    },
+    // 原有：解析脚本
+    parseScript(content) {
+      console.log("解析前的原始内容：", content);
+      this.debugInfo = "解析中：" + content.substring(0, 50);
+  
+      const lines = content.split("\n")
+        .map(line => line.trim())
+        .filter(line => line && line !== "end.");
+      
+      console.log("分割后的行：", lines);
+      const commands = [];
+      for (const line of lines) {
+        if (line === "wait;") {
+          commands.push({ type: "wait" });
+        } else if (line.includes(":")) {
+          const [keyPart, ...valueParts] = line.split(":");
+          const key = keyPart.trim();
+          let value = valueParts.join(":").trim()
+            .replace(/;$/, "")
+            .replace(/^"|"$/g, "");
+          
+          if (!isNaN(value)) {
+            value = Number(value);
+          }
+          commands.push({ type: "set", key, value });
+        }
+      }
+      commands.push({ type: "end" });
+      this.scriptLines = commands;
+      console.log("解析后的指令：", commands);
+      this.debugInfo = "解析完成，共" + commands.length + "条指令";
+    },
+    // 原有：执行下一行指令
+    executeNextLine() {
+      if (this.currentLine >= this.scriptLines.length) {
+        this.debugInfo = "脚本执行完毕";
+        console.log("脚本执行完毕");
+        return;
+      }
+  
+      const cmd = this.scriptLines[this.currentLine];
+      console.log("执行指令：", cmd);
+      this.debugInfo = "执行：" + JSON.stringify(cmd);
+      this.currentLine++;
+  
+      switch (cmd.type) {
+        case "set":
+          this.currentState[cmd.key] = cmd.value;
+          console.log("更新状态：", this.currentState);
+          this.executeNextLine();
+          break;
+        case "wait":
+          this.isWaiting = true;
+          this.debugInfo = "等待点击...";
+          this.currentState.txts = this.currentState.txts + "\n（点击按钮继续）";
+          // 等待时自动保存当前状态
+          this.saveCurrentState();
+          break;
+        case "end":
+          this.debugInfo = "脚本结束";
+          break;
+      }
+    },
+    // 原有：点击继续
+    txt_cl() {
+      console.log("按钮被点击，当前等待状态：", this.isWaiting);
+      this.debugInfo = "按钮点击，继续执行...";
+      if (this.isWaiting) {
+        this.isWaiting = false;
+        this.executeNextLine();
+      } else if (this.currentLine < this.scriptLines.length) {
+        this.executeNextLine();
+      }
+    },
+    // 新增：保存当前状态到存档文件
+    saveCurrentState() {
+      // 拼接存档内容：show:x;option:y;
+      const saveContent = `show:${this.currentState.show};option:${this.currentState.option};`;
+      console.log("保存存档：", saveContent);
+      this.debugInfo = `保存存档：${saveContent}`;
+      file.writeText({
+        uri: this.saveFilePath,
+        text: saveContent,
+        encoding: "utf8",
+        success: () => {
+          this.debugInfo = `存档保存成功：${saveContent}`;
+        },
+        fail: (err) => {
+          this.debugInfo = "存档保存失败：" + err.message;
+          console.error("存档保存失败：", err);
+        }
+      });
+    },
+    // 新增：手动触发恢复存档（按钮点击）
+    manualLoadSave() {
+      this.readSaveFile();
+      setTimeout(() => {
+        this.recoverFromSave();
+      }, 500);
+    }
+  };
+  </script>
+  
+  <style>
+  .page {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+  }
+  .swiper {
+    
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    indicator-size: 10px;
+  }
+  .stack {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .tx-img {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 336px;
+    height: 200px;
+    z-index: 10;
+  }
+  
+  .chara-img {
+    position: absolute;
+    bottom: 0px;
+    margin: 0 auto;
+    
+    width: 336px;
+    height: 300px;
+  }
+  
+  .is_debug {
+    position: absolute;
+    color: #fff;
+    top: 20px;
+    left: 20px;
+  }
+  .debug_switch {
+    top: 80px;
+    left: 20px;
+  }
+
+  .exit_btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+  }
+  /* 新增：保存/恢复按钮样式 */
+  .save-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 10;
+  }
+  
+  .load-btn {
+    position: absolute;
+    top: 20px;
+    right: 90px;
+    width: 60px;
+    height: 60px;
+    z-index: 10;
+  }
+  
+  .cname-text {
+    position: absolute;
+    top: 50px;
+    left: 50%; /* 居中对齐文本容器 */
+    transform: translateX(-50%); /* 水平居中 */
+    font-size: 32px; /* 配合对话文本调整角色名大小 */
+    color: #fff;
+    text-shadow: 2px 2px 4px #000;
+    z-index: 5;
+  }
+  
+  /* 核心修改：对话文本样式 */
+  .txt-text {
+    position: absolute;
+    /* 固定位置：屏幕底部100px，水平居中 */
+    lines: 3;
+
+
+    bottom: 20px;
+    left: 20px;
+    
+    /* 固定宽度：450px（适配你的屏幕宽度） */
+    width: 306px;
+    /* 字体大小：16px */
+    font-size: 24px;
+    color: #fff;
+    /* 自动换行关键：强制换行 + 行高适配 */
+    
+    
+    /* 背景半透明：增强文字辨识度 */
+    
+    
+    max-width: 90%;
+    box-sizing: border-box; /* 宽高包含内边距 */
+  }
+  .game_settings{
+    position: absolute;
+    top: 75px;
+    left: 10px;
+    width: 100%;
+    height: 75%;
+  }
+  .debug-text {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 12px; /* 缩小调试文本，避免遮挡 */
+    color: red;
+    z-index: 999;
+    white-space: pre-wrap;
+    max-width: 90%;
+  }
+  </style>

@@ -1,0 +1,1149 @@
+<template>
+  <div class="page">
+    <stack class='stack'>
+      <image 
+        alt="{{scene.bg}}" 
+        class="bg-img {{bgAnimClass}}"
+        style="width: 336px; height: 480px; object-fit: cover;bottom: 0px;left:0px; opacity: {{bgOpacity}};"
+      />
+      <image 
+        show='{{scene.chara !== "" }}'
+        alt="{{scene.chara}}" 
+        class="chara-img {{charaAnimClass}}" 
+        style="width: 336px;object-fit: contain; bottom:0px; left:0px;"
+      />
+      <image 
+        alt="/common/gaming/bt.png" 
+        class="tx-img" 
+        style="height: {{color_r*10+50}}px;"
+      />
+    <swiper class="swiper" index="1">
+      <stack >
+        <div class='blank'>
+          <text class='set_txt'>设置</text>
+        </div>
+        <div class='game_settings'>
+        <scroll scroll-y="true" style="flex-direction: column;" bounces="true">
+          <text class='is_debug'>调试日志</text>
+          <switch checked="{{config.debugMode}}" class="debug_switch" @change="toggleDebugMode"></switch>
+          <text class='typing-switch-text'>打字机效果</text>
+          <switch checked="{{config.enableTyping}}" class="typing-switch" @change="toggleTypingSwitch"></switch>
+          <text class='auto-next-text'>自动播放</text>
+          <switch checked="{{config.autoNext}}" class="auto-next-switch" @change="toggleAutoNextSwitch"></switch>
+          <div style="width:100px;height:30px"> </div>
+          <text class='testt' style="margin-bottom:20px">字体大小</text>
+          <slider class="slider_r" style="selected-color: rgb(0, 128, 225);" min="20" max="50" step="1" value="{{ color_r }}" onchange="r"></slider>
+          <text class='testt' style="margin-bottom:20px">打字机速度</text>
+          <slider class="slider_g" style="selected-color: rgb(0, 128, 255);" min="10" max="100" step="10" value="{{ config.typingSpeed }}" onchange="g"></slider>
+          <!-- <slider class="slider_b" style="selected-color: rgb(0, 0, {{color_b}});" min="0" max="255" step="16" value="{{ color_b }}" onchange="b"></slider> -->
+          <text class='testt' style="margin-bottom:20px">目前只有这一些...</text>
+        </scroll>
+        </div>
+        <text class="debug-text" show="{{config.debugMode}}">
+调试信息：
+{{debugInfo}}
+---
+当前Label：{{currentLabel}}
+当前索引：{{currentCmdIndex}}
+历史记录数：{{pageHistory.length}}
+        </text>
+        <input class="exit_btn" onclick="handleExit" value='<'/>
+        <input class="goback_btn" onclick="handleGoback" value='回退' />
+        <input class="save-btn" onclick="handleSave" value='保存' />
+        <input class="load-btn" onclick="handleLoad" value='加载' />
+      </stack>
+      <stack class="stack">
+        <text class='exit-text' if="{{exiting}}">{{exit_txt}}</text>
+        <text class='exit-text' if="{{config.debugMode}}" >y:{{ani_y}} x:{{ani_x}}</text>
+
+        
+
+        
+        <!-- <scroll class='blank3' scroll-y="true" style="flex: 1; overflow-y: auto;" >
+          
+        </scroll> -->
+        <text class="txt-text" style="font-size: {{color_r}}px;">{{displaySpeaker}}{{typingTxt}}</text>
+        
+        <div class='blank2' onclick="handleScreenClick"></div>
+        <picker 
+          class="option-picker" 
+          type="text" 
+          range="{{pickerOptionList}}" 
+          selected="{{selectedOptionIndex}}"
+          onchange="handleOptionSelect"
+          show="{{hasOptions}}"
+        ></picker>
+        <div class="warp-confirm" if="{{showWarpConfirm}}">
+          <div class="warp-box">
+            <text class="warp-title">是否跳转到新章节？</text>
+            <div class="warp-buttons">
+              <input class="warp-btn yes" type="button" onclick="confirmWarp" value="是"/>
+              <input class="warp-btn no" type="button" onclick="cancelWarp" value="否"/>
+            </div>
+          </div>
+        </div>
+      </stack>
+    </swiper>
+    </stack>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+import file from '@system.file'
+import app from '@system.app'
+import prompt from '@system.prompt'
+
+export default {
+  data: {
+    scene: {
+      bg: "/common/bg.jpg",
+      chara: "/common/empty.png",
+      speaker: "",
+      content: "点击屏幕开始..."
+    },
+    scriptData: null,
+    currentLabel: "start",
+    currentCmdIndex: 0,
+    isRunning: false,
+    isWaiting: false,
+    globalVars: {},
+    config: {
+      debugMode: false,
+      enableTyping: true,
+      autoNext: false,
+      typingSpeed: 50,
+      bgmVolume: 80,
+      seVolume: 100
+    },
+    bgAnimClass: "",
+    charaAnimClass: "",
+    animTimer: null,
+    ani_x: 0,
+    ani_y: 0,
+    bg_x: 0,
+    bg_y: 0,
+    isTyping: false,
+    typingTxt: "",
+    fullTxt: "",
+    typingIndex: 0,
+    typingTimer: null,
+    autoNextTimer: null,
+    hasOptions: false,
+    optionList: [],
+    pickerOptionList: [],
+    selectedOptionIndex: 0,
+    
+    pageHistory: [],
+    
+    exiting: false,
+    exit_txt: "",
+    showWarpConfirm: false,
+    warpTargetPath: "",
+    debugInfo: "初始化中...",
+    color_r: 20,
+    color_b: 0,
+
+    pendingSelectOptions: null,
+    saveFileName: "VGE/shared/userdata.txt",
+    configFileName: "VGE/shared/userconfig.txt",
+    chapterFileName: "VGE/shared/userchapter.txt",
+    defaultScriptPath: "/Common/GAMEDATA/gamedata1.txt", // ✅ 统一为 .txt
+    
+    // === 新增：背景淡入淡出控制 ===
+    bgOpacity: 1,           // 背景透明度
+    bgTransitionTimer: null,// 背景动画定时器（用于打断）
+    isBgChanging: false,    // 背景是否正在切换中
+    // ===============================
+
+    lastCmdWasAnimation: false
+  },
+
+  computed: {
+    displaySpeaker() {
+      const s = (this.scene.speaker || "").trim();
+      return s === "" ? "" : "【"+s+"】" + "\n";
+    }
+  },
+
+  onReady() {
+    this.log("系统启动");
+    this.initGame();
+  },
+
+  async initGame() {
+    try {
+      await this.loadConfig();
+      await this.loadScript();
+      const loadSuccess = await this.loadSave();
+      if (!loadSuccess) {
+        this.startNewGame();
+      }
+    } catch (e) {
+      this.log("初始化异常: " + e.message);
+      this.alert("初始化失败，请检查文件");
+    }
+  },
+
+  readAssetFile(assetPath) {
+    return new Promise((resolve, reject) => {
+      file.readText({
+        uri: assetPath,
+        encoding: "utf8",
+        success: (res) => {
+          this.log("资源读取成功: " + assetPath);
+          resolve(res.text);
+        },
+        fail: (data, code) => {
+          this.log("资源读取失败: " + code);
+          reject(data);
+        }
+      });
+    });
+  },
+
+  readDataFile(fileName) {
+    return new Promise((resolve, reject) => {
+      const path = "internal://files/" + fileName;
+      file.readText({
+        uri: path,
+        encoding: "utf8",
+        success: (res) => resolve(res.text),
+        fail: (err) => reject(err)
+      });
+    });
+  },
+
+  writeDataFile(fileName, content) {
+    return new Promise((resolve, reject) => {
+      const path = "internal://files/" + fileName;
+      file.writeText({
+        uri: path,
+        text: content,
+        encoding: "utf8",
+        success: () => resolve(),
+        fail: (err) => reject(err)
+      });
+    });
+  },
+
+  async loadConfig() {
+    try {
+      const text = await this.readDataFile(this.configFileName);
+      const cfg = JSON.parse(text);
+      this.config = { ...this.config, ...cfg };
+      this.log("配置加载成功");
+    } catch (e) {
+      this.log("无配置文件，使用默认");
+    }
+  },
+
+  async saveConfig() {
+    try {
+      await this.writeDataFile(this.configFileName, JSON.stringify(this.config));
+    } catch (e) {
+      this.log("保存配置失败");
+    }
+  },
+
+  async loadScript() {
+    this.debugInfo = "加载剧本中...";
+    
+    let scriptPath = this.defaultScriptPath;
+    try {
+      const chapterPath = await this.readDataFile(this.chapterFileName);
+      if(chapterPath && chapterPath.trim()) {
+        scriptPath = chapterPath.trim();
+      }
+    } catch (e) {
+      this.log("使用默认剧本路径");
+    }
+
+    try {
+      this.log("尝试读取: " + scriptPath);
+      const text = await this.readAssetFile(scriptPath);
+      this.scriptData = JSON.parse(text);
+      this.log("剧本加载成功: " + Object.keys(this.scriptData.labels).join(", "));
+    } catch (e) {
+      this.log("剧本加载失败: " + e.message + "，使用兜底剧本");
+      this.scriptData = this.getDemoScriptData();
+    }
+  },
+
+  getDemoScriptData() {
+    return {
+      version: "1.0",
+      defaultLabel: "start",
+      labels: {
+        "start": [
+          {"type": "bg", "params": {"path": "/common/bg.jpg"}},
+          {"type": "text", "params": {"speaker": "系统", "content": "请检查剧本路径是否为 /Common/GAMEDATA/gamedata1.txt"}},
+          {"type": "wait"}
+        ]
+      }
+    };
+  },
+
+  startNewGame() {
+    this.log("开始新游戏");
+    this.pageHistory = [];
+    const startLabel = this.scriptData.defaultLabel || "start";
+    this.jumpToLabel(startLabel, 0);
+  },
+
+  jumpToLabel(labelName, startIndex) {
+    if (!this.scriptData || !this.scriptData.labels) {
+      this.alert("剧本未加载");
+      return;
+    }
+    const commands = this.scriptData.labels[labelName];
+    if (!commands) {
+      this.alert("找不到 Label: " + labelName);
+      return;
+    }
+    this.currentLabel = labelName;
+    this.currentCmdIndex = startIndex || 0;
+    this.isRunning = true;
+    this.hasOptions = false;
+    this.lastCmdWasAnimation = false;
+    this.log("跳转至: " + labelName + " @ " + this.currentCmdIndex);
+    this.runCommands();
+  },
+
+  async runCommands() {
+  if (!this.isRunning) return;
+  const commands = this.scriptData.labels[this.currentLabel];
+  if (!commands) return;
+
+  while (this.currentCmdIndex < commands.length) {
+    const cmd = commands[this.currentCmdIndex];
+    this.currentCmdIndex++;
+    this.log("执行: " + cmd.type);
+    this.debugInfo = "执行: " + cmd.type;
+    
+    // 等待当前命令执行完毕（如果是 bg 命令，会等动画）
+    const shouldBreak = await this.executeCommand(cmd, commands, this.currentCmdIndex);
+    if (shouldBreak) {
+      this.isRunning = false;
+      return;
+    }
+  }
+  this.isRunning = false;
+},
+
+// ==========================================
+// === 新增：核心背景切换逻辑 (含打断机制) ===
+// ==========================================
+changeBg(newPath) {
+  return new Promise((resolve) => {
+    // 1. 动画打断逻辑：如果上一个动画还没结束，强制结束
+    if (this.bgTransitionTimer) {
+      clearTimeout(this.bgTransitionTimer);
+      this.bgTransitionTimer = null;
+    }
+    
+    // 如果是同一张图，不做任何处理
+    if (this.scene.bg === newPath) {
+      resolve();
+      return;
+    }
+
+    // 2. 开始淡出
+    this.bgOpacity = 0;
+    
+    // 3. 等待淡出完成 (400ms)
+    this.bgTransitionTimer = setTimeout(() => {
+      // 4. 真正切换图片资源
+      this.scene.bg = newPath;
+      
+      // 5. 等待一帧，确保 DOM 更新图片 src
+      this.bgTransitionTimer = setTimeout(() => {
+        // 6. 开始淡入
+        this.bgOpacity = 1;
+        
+        // 7. 等待淡入完成
+        this.bgTransitionTimer = setTimeout(() => {
+          this.bgTransitionTimer = null;
+          this.isBgChanging = false;
+          resolve(); // 通知剧情可以继续了
+        }, 400); // 这里的时间要和 CSS transition 一致
+      }, 16);
+    }, 400);
+  });
+},
+
+async executeCommand(cmd, commands, nextIndex) {
+  switch (cmd.type) {
+    case "bg":
+      // 调用专门的背景切换函数，并等待它完成
+      await this.changeBg(cmd.params.path);
+      this.lastCmdWasAnimation = false;
+      return false;
+      
+    case "chara":
+      this.scene.chara = cmd.params.path;
+      this.lastCmdWasAnimation = false;
+      return false;
+      
+    case "text":
+      // ... text 逻辑保持不变 ...
+      this.scene.speaker = cmd.params.speaker || "";
+      let content = cmd.params.content || "";
+      let forceTyping = false;
+      if (this.lastCmdWasAnimation) {
+        if (!content || content.trim() === "") content = "...";
+        forceTyping = true;
+      } else {
+        if (!content || content.trim() === "") content = "...";
+      }
+      this.scene.content = content;
+      this.startTyping(this.scene.content, forceTyping);
+      this.lastCmdWasAnimation = false;
+      return true;
+      
+    case "ani":
+      // ... ani 逻辑保持不变 ...
+      this.playCharacterAni(cmd.params.name);
+      this.lastCmdWasAnimation = true;
+      if (nextIndex < commands.length) {
+        const nextCmd = commands[nextIndex];
+        if (nextCmd.type === "wait") {
+          this.scene.speaker = "";
+          this.scene.content = "...";
+          this.startTyping("...", true);
+          return true;
+        }
+      }
+      return false;
+      
+    case "bg_ani":
+      // ... bg_ani 逻辑保持不变 ...
+      this.playBgAni(cmd.params.name);
+      this.lastCmdWasAnimation = true;
+      if (nextIndex < commands.length) {
+        const nextCmd = commands[nextIndex];
+        if (nextCmd.type === "wait") {
+          this.scene.speaker = "";
+          this.scene.content = "...";
+          this.startTyping("...", true);
+          return true;
+        }
+      }
+      return false;
+      
+    case "wait":
+      // ... wait 逻辑保持不变 ...
+      this.isWaiting = true;
+      this.lastCmdWasAnimation = false;
+      if (this.config.autoNext) {
+        this.clearAutoNextTimer();
+        this.autoNextTimer = setTimeout(() => {
+          if (this.isWaiting) {
+            this.isWaiting = false;
+            this.isRunning = true;
+            this.runCommands(); // 注意：这里调用 runCommands() 不需要 await
+          }
+        }, 800);
+      }
+      return true;
+      
+    case "goto":
+      this.pushHistory();
+      this.jumpToLabel(cmd.params.label, 0);
+      return true;
+      
+    case "select":
+      this.showOptions(cmd.params.options);
+      this.lastCmdWasAnimation = false;
+      return true;
+      
+    case "setVar":
+      this.globalVars[cmd.params.name] = cmd.params.value;
+      this.lastCmdWasAnimation = false;
+      return false;
+      
+    case "if":
+      const condition = this.evalCondition(cmd.params.condition);
+      const target = condition ? cmd.params.trueLabel : cmd.params.falseLabel;
+      this.pushHistory();
+      this.jumpToLabel(target, 0);
+      return true;
+      
+    case "warp":
+      this.showWarpConfirm = true;
+      this.warpTargetPath = cmd.params.path;
+      this.isWaiting = true;
+      this.lastCmdWasAnimation = false;
+      return true;
+      
+    case "end":
+      this.scene.content = "剧情结束";
+      this.typingTxt = this.scene.content;
+      this.isWaiting = true;
+      this.lastCmdWasAnimation = false;
+      return true;
+      
+    default:
+      this.log("未知指令: " + cmd.type);
+      this.lastCmdWasAnimation = false;
+      return false;
+  }
+},
+
+  evalCondition(cond) {
+    try {
+      for (const key in this.globalVars) {
+        if (cond.includes(key)) {
+          const val = this.globalVars[key];
+          if (cond.includes(">=")) {
+            const num = Number(cond.split(">=")[1].trim());
+            return val >= num;
+          }
+        }
+      }
+    } catch (e) {}
+    return false;
+  },
+
+  showOptions(options) {
+    this.hasOptions = true;
+    this.optionList = options;
+    this.pickerOptionList = options.map(o => o.text);
+    this.selectedOptionIndex = 0;
+    this.isWaiting = true;
+  },
+
+  handleOptionSelect(e) {
+    const text = e.newValue;
+    const opt = this.optionList.find(o => o.text === text);
+    if (!opt) return;
+    this.log("选择: " + opt.text);
+    this.hasOptions = false;
+    this.isWaiting = false;
+    
+    this.pushHistory();
+    
+    this.handleSave(true);
+    this.jumpToLabel(opt.targetLabel, 0);
+  },
+
+  pushHistory() {
+    this.pageHistory.push({
+      label: this.currentLabel,
+      index: this.currentCmdIndex - 1,
+      scene: JSON.parse(JSON.stringify(this.scene)),
+      globalVars: JSON.parse(JSON.stringify(this.globalVars))
+    });
+    this.log("历史记录已保存 (跳转点): " + this.currentLabel + " @ " + (this.currentCmdIndex - 1));
+  },
+
+  startTyping(text, forceEnable = false) {
+    this.fullTxt = text || "...";
+    this.stopTypingTimer();
+    
+    const shouldType = forceEnable || this.config.enableTyping;
+    
+    if (!shouldType) {
+      this.typingTxt = this.fullTxt;
+      this.isTyping = false;
+      this.isWaiting = true;
+      this.triggerAutoNext();
+      return;
+    }
+
+    this.typingTxt = "";
+    this.typingIndex = 0;
+    this.isTyping = true;
+    
+    this.typeNextChar();
+    this.typingTimer = setInterval(() => {
+      this.typeNextChar();
+    }, this.config.typingSpeed);
+  },
+
+  typeNextChar() {
+    if (this.typingIndex >= this.fullTxt.length) {
+      this.stopTypingTimer();
+      this.typingTxt = this.fullTxt;
+      this.isTyping = false;
+      this.isWaiting = false;
+      this.isRunning = true;
+      this.runCommands();
+      return;
+    }
+    this.typingTxt += this.fullTxt.charAt(this.typingIndex++);
+  },
+
+  triggerAutoNext() {
+    if (this.config.autoNext && this.isWaiting && !this.hasOptions && !this.showWarpConfirm) {
+      setTimeout(() => {
+        if (this.isWaiting) {
+          this.isWaiting = false;
+          this.isRunning = true;
+          this.runCommands();
+        }
+      }, 800);
+    }
+  },
+
+  clearAutoNextTimer() {
+    if (this.autoNextTimer) {
+      clearTimeout(this.autoNextTimer);
+      this.autoNextTimer = null;
+    }
+  },
+
+  skipTyping() {
+    if (this.isTyping) {
+      this.stopTypingTimer();
+      this.typingTxt = this.fullTxt;
+      this.isTyping = false;
+      this.isWaiting = false;
+      this.isRunning = true;
+      this.runCommands();
+    }
+  },
+  stopTypingTimer() {
+    if (this.typingTimer) {
+      clearInterval(this.typingTimer);
+      this.typingTimer = null;
+    }
+  },
+
+  handleScreenClick() {
+    if (this.isTyping) {
+      this.skipTyping();
+      return;
+    }
+    if (this.isWaiting && !this.hasOptions && !this.showWarpConfirm) {
+      this.isWaiting = false;
+      this.isRunning = true;
+      this.runCommands();
+    }
+  },
+
+  handleGoback() {
+    this.log("--- 点击回退 ---");
+    this.skipTyping();
+    this.stopAllAnimations();
+    this.hasOptions = false;
+
+    const commands = this.scriptData.labels[this.currentLabel];
+    if (!commands) {
+      this.alert("无法回退");
+      return;
+    }
+
+    let targetIndex = -1;
+    
+    for (let i = this.currentCmdIndex - 2; i >= 0; i--) {
+      const cmd = commands[i];
+      if (cmd.type === "wait" || cmd.type === "select") {
+        targetIndex = i;
+        break;
+      }
+    }
+
+    if (targetIndex !== -1) {
+      this.log("模式1：本 Label 内回退到 " + targetIndex);
+      this.fastForwardToIndex(targetIndex);
+      return;
+    }
+
+    this.log("模式2：尝试跨 Label 回退");
+    
+    if (this.pageHistory.length === 0) {
+      this.log("无历史记录，无法回退");
+      this.alert("已经是开头了，无法回退");
+      return;
+    }
+
+    const prevState = this.pageHistory.pop();
+    this.log("恢复到上一个 Label: " + prevState.label);
+    
+    this.scene = JSON.parse(JSON.stringify(prevState.scene));
+    this.globalVars = JSON.parse(JSON.stringify(prevState.globalVars));
+    this.currentLabel = prevState.label;
+    this.fastForwardToIndex(prevState.index);
+  },
+
+  fastForwardToIndex(targetIndex) {
+    const commands = this.scriptData.labels[this.currentLabel];
+    if (!commands) return;
+
+    this.log("开始快进，目标索引: " + targetIndex);
+
+    this.isRunning = true;
+    this.isWaiting = false;
+    this.hasOptions = false;
+    this.currentCmdIndex = 0;
+    this.lastCmdWasAnimation = false;
+    
+    while (this.currentCmdIndex <= targetIndex) {
+      const cmd = commands[this.currentCmdIndex];
+      this.currentCmdIndex++;
+      this.executeCommandSilent(cmd);
+      
+      if (this.currentCmdIndex - 1 === targetIndex && cmd.type === "select") {
+         this.pendingSelectOptions = cmd.params.options;
+      }
+    }
+
+    this.typingTxt = this.scene.content;
+    this.isWaiting = true;
+    this.isRunning = false;
+    
+    if (this.pendingSelectOptions) {
+      this.showOptions(this.pendingSelectOptions);
+      this.pendingSelectOptions = null;
+    }
+    
+    this.log("快进完成");
+  },
+
+  executeCommandSilent(cmd) {
+  switch (cmd.type) {
+    case "bg":
+      // 快进时：直接切图，强制透明度为1，清除所有动画定时器
+      this.scene.bg = cmd.params.path;
+      this.bgOpacity = 1; 
+      if (this.bgTransitionTimer) {
+        clearTimeout(this.bgTransitionTimer);
+        this.bgTransitionTimer = null;
+      }
+      break;
+    case "chara":
+      this.scene.chara = cmd.params.path;
+      break;
+    case "text":
+      this.scene.speaker = cmd.params.speaker || "";
+      this.scene.content = cmd.params.content || "...";
+      break;
+    case "ani":
+    case "bg_ani":
+      break;
+    case "wait":
+    case "select":
+      break;
+    case "setVar":
+      this.globalVars[cmd.params.name] = cmd.params.value;
+      break;
+    case "goto":
+      break;
+  }
+},
+  async handleSave(silent) {
+    const saveData = {
+      version: this.scriptData.version || "1.0",
+      timestamp: Date.now(),
+      title: this.scene.content.substring(0, 10) + "...",
+      core: {
+        label: this.currentLabel,
+        index: this.currentCmdIndex > 0 ? this.currentCmdIndex - 1 : 0,
+        globalVars: this.globalVars,
+        scene: this.scene
+      },
+      historySnapshot: JSON.parse(JSON.stringify(this.pageHistory))
+    };
+
+    try {
+      await this.writeDataFile(this.saveFileName, JSON.stringify(saveData));
+      if (!silent) {
+        this.alert("存档成功 (含回退历史)");
+      }
+      this.log("存档成功 (含回退历史)");
+    } catch (e) {
+      this.alert("存档失败");
+      this.log("存档失败: " + e.message);
+    }
+  },
+
+  async loadSave() {
+    try {
+      const text = await this.readDataFile(this.saveFileName);
+      const saveData = JSON.parse(text);
+      
+      if (saveData.version !== this.scriptData.version) {
+        this.log("版本不兼容，建议开新档");
+      }
+
+      this.globalVars = saveData.core.globalVars || {};
+      this.scene = saveData.core.scene || this.scene;
+      this.currentLabel = saveData.core.label;
+      
+      if (saveData.historySnapshot && Array.isArray(saveData.historySnapshot)) {
+        this.pageHistory = saveData.historySnapshot;
+        this.log("已恢复回退历史，共 " + this.pageHistory.length + " 条");
+      } else {
+        this.pageHistory = [];
+        this.log("旧存档，无回退历史");
+      }
+      
+      this.fastForwardToIndex(saveData.core.index);
+      this.alert("读档成功");
+      return true;
+    } catch (e) {
+      this.log("无存档或读档失败: " + e.message);
+      return false;
+    }
+  },
+
+  handleLoad() {
+    this.skipTyping();
+    this.stopAllAnimations();
+    this.loadSave();
+  },
+
+  playCharacterAni(name) {
+    this.stopAllAnimations();
+    switch(name) {
+      case "jump": this.playJump(); break;
+      case "shakex": this.playShakeX(); break;
+      case "shakey": this.playShakeY(); break;
+    }
+  },
+
+  playBgAni(name) {
+    this.stopAllAnimations();
+    switch(name) {
+      case "jump": this.playBgJump(); break;
+      case "shakex": this.playBgShakeX(); break;
+      case "shakey": this.playBgShakeY(); break;
+    }
+  },
+
+  stopAllAnimations() {
+    if (this.animTimer) clearTimeout(this.animTimer);
+    this.animTimer = null;
+    this.ani_x = 0; this.ani_y = 0; this.bg_x = 0; this.bg_y = 0;
+  },
+
+  playJump() {
+    this.stopAllAnimations();
+    this.charaAnimClass = "anim-jump-up";
+    this.animTimer = setTimeout(() => {
+      this.charaAnimClass = "anim-jump-down";
+      setTimeout(() => { this.charaAnimClass = ""; this.ani_y = 0; }, 250);
+    }, 250);
+  },
+  playShakeX() {
+    this.stopAllAnimations();
+    let count = 0;
+    const shake = () => {
+      if (count >= 4) {
+        this.charaAnimClass = "anim-reset-x";
+        setTimeout(() => { this.charaAnimClass = ""; this.ani_x = 0; }, 10);
+        return;
+      }
+      this.charaAnimClass = count % 2 === 0 ? "anim-shake-left" : "anim-shake-right";
+      this.ani_x = count % 2 === 0 ? -15 : 15;
+      count++;
+      this.animTimer = setTimeout(shake, 75);
+    };
+    shake();
+  },
+  playShakeY() {
+    this.stopAllAnimations();
+    let count = 0;
+    const shake = () => {
+      if (count >= 4) {
+        this.charaAnimClass = "anim-reset-y";
+        setTimeout(() => { this.charaAnimClass = ""; this.ani_y = 0; }, 10);
+        return;
+      }
+      this.charaAnimClass = count % 2 === 0 ? "anim-shake-up" : "anim-shake-down";
+      this.ani_y = count % 2 === 0 ? -10 : 10;
+      count++;
+      this.animTimer = setTimeout(shake, 75);
+    };
+    shake();
+  },
+  playBgJump() {
+    this.stopAllAnimations();
+    this.bgAnimClass = "bg-anim-jump-up";
+    this.animTimer = setTimeout(() => {
+      this.bgAnimClass = "bg-anim-jump-down";
+      setTimeout(() => { this.bgAnimClass = ""; this.bg_y = 0; }, 250);
+    }, 250);
+  },
+  playBgShakeX() {
+    this.stopAllAnimations();
+    let count = 0;
+    const shake = () => {
+      if (count >= 4) {
+        this.bgAnimClass = "bg-anim-reset-x";
+        setTimeout(() => { this.bgAnimClass = ""; this.bg_x = 0; }, 10);
+        return;
+      }
+      this.bgAnimClass = count % 2 === 0 ? "bg-anim-shake-left" : "bg-anim-shake-right";
+      this.bg_x = count % 2 === 0 ? -15 : 15;
+      count++;
+      this.animTimer = setTimeout(shake, 75);
+    };
+    shake();
+  },
+  playBgShakeY() {
+    this.stopAllAnimations();
+    let count = 0;
+    const shake = () => {
+      if (count >= 4) {
+        this.bgAnimClass = "bg-anim-reset-y";
+        setTimeout(() => { this.bgAnimClass = ""; this.bg_y = 0; }, 10);
+        return;
+      }
+      this.bgAnimClass = count % 2 === 0 ? "bg-anim-shake-up" : "bg-anim-shake-down";
+      this.bg_y = count % 2 === 0 ? -10 : 10;
+      count++;
+      this.animTimer = setTimeout(shake, 75);
+    };
+    shake();
+  },
+
+  toggleDebugMode(e) {
+    this.config.debugMode = e.checked;
+    this.saveConfig();
+  },
+  toggleTypingSwitch(e) {
+    this.config.enableTyping = e.checked;
+    if (!this.config.enableTyping && this.isTyping) {
+      this.skipTyping();
+    }
+    this.saveConfig();
+  },
+  toggleAutoNextSwitch(e) {
+    this.config.autoNext = e.checked;
+    if (this.config.autoNext && this.isWaiting && !this.hasOptions) {
+      this.triggerAutoNext();
+    }
+    this.saveConfig();
+  },
+
+  // ✅ 核心修复：完善 confirmWarp，统一使用 writeDataFile
+  confirmWarp() {
+    // 1. 保存新章节路径
+    this.writeDataFile(this.chapterFileName, this.warpTargetPath)
+      .then(() => {
+        // 2. 构建完整的重置存档数据（包含 historySnapshot）
+        const resetSave = {
+          version: "1.0",
+          timestamp: 0,
+          title: "New Chapter",
+          core: {
+            label: "start",
+            index: 0,
+            globalVars: {},
+            scene: {
+              bg: "/common/main_page_img/bg.png",
+              chara: "/common/empty.png",
+              speaker: "",
+              content: "点击屏幕开始..."
+            }
+          },
+          historySnapshot: []
+        };
+        // 3. 写入重置存档
+        return this.writeDataFile(this.saveFileName, JSON.stringify(resetSave));
+      })
+      .then(() => {
+        // 4. 刷新页面重启游戏
+        router.replace({ uri: "pages/gaming" });
+      })
+      .catch((err) => {
+        this.log("Warp 失败: " + JSON.stringify(err));
+        // 即使失败也尝试刷新
+        router.replace({ uri: "pages/gaming" });
+      });
+  },
+
+  cancelWarp() {
+    this.showWarpConfirm = false;
+    this.isWaiting = false;
+    this.typingTxt = "已取消跳转";
+  },
+
+  handleExit() {
+    this.skipTyping();
+    this.stopAllAnimations();
+    this.exiting = true;
+    this.exit_txt = "正在退出";
+    try {
+      router.replace({ uri: "pages/main" });
+    } catch (e) {
+      app.exit();
+    }
+  },
+
+  log(msg) {
+    console.log("[GAME]", msg);
+    if (this.config.debugMode) {
+      this.debugInfo = msg;
+    }
+  },
+  alert(msg) {
+    prompt.showToast({ message: msg, duration: 2000 });
+  },
+  r(e) { this.color_r = e.progress },
+  g(e) { this.config.typingSpeed = e.progress },
+  b(e) { this.color_b = e.progress },
+
+  onDestroy() {
+    this.stopTypingTimer();
+    this.clearAutoNextTimer();
+    this.stopAllAnimations();
+  }
+};
+</script>
+
+<style>
+/* 样式完全保留 */
+.page {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+}
+.swiper {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  indicator-size: 10px;
+}
+.stack {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.blank {
+  border-radius: 16px;
+  position: absolute;
+  top: 100px;
+  left: 10px;
+  width: 316px; height: 336px;
+  background-color:rgba(255, 255, 255, 0.6);
+}
+.blank2 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 336px; height: 480px;
+  background-color:rgba(0,0,0,0);
+}
+.blank3 {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  width: 300px;
+  height: 100px;
+  background-color:rgba(0, 0, 0, 0.616);
+}
+.tx-img {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 336px;
+  
+  z-index: 10;
+}
+.chara-img {
+  object-fit: cover;
+  position: absolute;
+  margin: 0 auto;
+  width: 336px;
+  height: 400px;
+  transform: translateX(0px);
+  transform: translateY(0px);
+}
+.bg-img {
+  /* 原有属性 */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 336px;
+  height: 480px;
+  transform: translateX(0px);
+  transform: translateY(0px);
+  /* === 新增：透明度过渡 === */
+  transition: opacity 400ms ease-in-out;
+}
+
+@keyframes reset-x { 0% { transform: translateX(0px); } 100% { transform: translateX(0px); } }
+.anim-reset-x { animation-name: reset-x; animation-duration: 10ms; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes reset-y { 0% { transform: translateY(0px); } 100% { transform: translateY(0px); } }
+.anim-reset-y { animation-name: reset-y; animation-duration: 10ms; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes jump-up { 0% { transform: translateY(0px); } 100% { transform: translateY(-30px); } }
+.anim-jump-up { animation-name: jump-up; animation-duration: 250ms; animation-timing-function: ease-out; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes jump-down { 0% { transform: translateY(-30px); } 100% { transform: translateY(0px); } }
+.anim-jump-down { animation-name: jump-down; animation-duration: 250ms; animation-timing-function: ease-in; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes shake-left { 0% { transform: translateX(0px); } 100% { transform: translateX(-20px); } }
+.anim-shake-left { animation-name: shake-left; animation-duration: 75ms; animation-timing-function: linear; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes shake-right { 0% { transform: translateX(20px); } 100% { transform: translateX(0px); } }
+.anim-shake-right { animation-name: shake-right; animation-duration: 75ms; animation-timing-function: linear; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes shake-up { 0% { transform: translateY(0px); } 100% { transform: translateY(-30px); } }
+.anim-shake-up { animation-name: shake-up; animation-duration: 75ms; animation-timing-function: linear; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes shake-down { 0% { transform: translateY(30px); } 100% { transform: translateY(0px); } }
+.anim-shake-down { animation-name: shake-down; animation-duration: 75ms; animation-timing-function: linear; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes bg-reset-x { 0% { transform: translateX(0px); } 100% { transform: translateX(0px); } }
+.bg-anim-reset-x { animation-name: bg-reset-x; animation-duration: 10ms; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes bg-reset-y { 0% { transform: translateY(0px); } 100% { transform: translateY(0px); } }
+.bg-anim-reset-y { animation-name: bg-reset-y; animation-duration: 10ms; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes bg-jump-up { 0% { transform: translateY(0px); } 100% { transform: translateY(-20px); } }
+.bg-anim-jump-up { animation-name: bg-jump-up; animation-duration: 250ms; animation-timing-function: ease-out; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes bg-jump-down { 0% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+.bg-anim-jump-down { animation-name: bg-jump-down; animation-duration: 250ms; animation-timing-function: ease-in; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes bg-shake-left { 0% { transform: translateX(0px); } 100% { transform: translateX(-30px); } }
+.bg-anim-shake-left { animation-name: bg-shake-left; animation-duration: 75ms; animation-timing-function: linear; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes bg-shake-right { 0% { transform: translateX(30px); } 100% { transform: translateX(0px); } }
+.bg-anim-shake-right { animation-name: bg-shake-right; animation-duration: 75ms; animation-timing-function: linear; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes bg-shake-up { 0% { transform: translateY(0px); } 100% { transform: translateY(-60px); } }
+.bg-anim-shake-up { animation-name: bg-shake-up; animation-duration: 75ms; animation-timing-function: linear; animation-iteration-count: 1; animation-fill-mode: none; }
+@keyframes bg-shake-down { 0% { transform: translateY(60px); } 100% { transform: translateY(0px); } }
+.bg-anim-shake-down { animation-name: bg-shake-down; animation-duration: 75ms; animation-timing-function: linear; animation-iteration-count: 1; animation-fill-mode: none; }
+.slider_r, .slider_g, .slider_b { left: 30px; margin-top: 20px; margin-bottom: 20px; padding-left: 0; padding-right: 0; }
+.testt{ width: 286px; color: #111111; top: 20px; left: 20px; font-size: 24px; }
+.set_txt { position: absolute; top: 0px; right: 0px; font-size: 36px; color: #111111;}
+.is_debug, .typing-switch-text, .auto-next-text { color: #111111; top: 20px; left: 20px; font-size: 24px; }
+.debug_switch, .typing-switch, .auto-next-switch { top: 20px; left: 20px; }
+.goback_btn, .exit_btn, .save-btn, .load-btn {
+  color: #000000be; background-color: rgba(255, 255, 255, 0.788); font-size: 24px;
+  object-fit: none; position: absolute; top: 20px; width: 64px; height: 64px;
+}
+.exit_btn { left: 20px; }
+.goback_btn { left: 97px; }
+.save-btn { right: 20px; z-index: 10; }
+.load-btn { right: 97px; z-index: 10; }
+.option-picker {
+  position: absolute; bottom: 100px; left: 33px; width: 80%; height: 180px;
+  font-size: 24px; color: rgb(255, 255, 255); selected-font-size: 28px; selected-color: #00b7ff;
+  selected-background-color: rgba(0, 153, 255, 0.8); background-color: rgba(27, 27, 27, 0.6);
+  border: 2px solid #000000; border-radius: 10px; z-index: 15;
+}
+.txt-text {
+  position: absolute; bottom: 20px; left: 18px; width: 300px; 
+   color: #fff; box-sizing: border-box;
+  white-space: pre-wrap; text-shadow: 1px 1px 2px #000;
+}
+.game_settings{ position: absolute; top: 100px; left: 10px; width: 316px; height: 70%; }
+.exit-text, .debug-text {
+  position: absolute; font-size: 14px; color: rgb(255, 255, 255);
+  background-color: rgba(0,0,0,0.8); padding: 5px;
+}
+.exit-text { top: 100px; left: 10px; }
+.debug-text { lines:5; bottom: 10px; left: 10px; color: #0f0; white-space: pre-wrap; width: 320px; }
+.warp-confirm {
+  position: absolute; top: 0; left: 0; width: 336px; height: 480px;
+  background-color: rgba(0,0,0,0.8); z-index: 100;
+  justify-content: center; align-items: center;
+}
+.warp-box {
+  width: 280px; background-color: #222; border: 2px solid #fff;
+  border-radius: 10px; padding: 20px; flex-direction: column; align-items: center;
+}
+.warp-title { color: #fff; font-size: 20px; margin-bottom: 20px; text-align: center; }
+.warp-buttons { flex-direction: row; justify-content: space-around; width: 100%; }
+.warp-btn { width: 100px; height: 40px; border-radius: 5px; font-size: 18px; color: #fff; }
+.warp-btn.yes { background-color: #4CAF50; }
+.warp-btn.no { background-color: #f44336; }
+</style>
