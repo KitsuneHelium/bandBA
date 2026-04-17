@@ -5,6 +5,7 @@
       <image 
         class='title-img'
         src="/common/bg.jpg"
+        style="opacity: {{bgO}};"
       />
       
       <swiper class="swp" indicator="false" index="1" loop="false" >
@@ -16,11 +17,12 @@
             bounces="true"
             style="scroll-snap-type: x mandatory; bottom:5px; align-items: center;"
           >
-            <div style="width:100px;height:50px"> </div>
+            <div style="width:100px;height:80px"> </div>
             <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<新的开始>" onclick="new_start"></input>
             <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<继续游玩>" onclick="start"></input>
             <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<章节>" onclick="chapter"></input>
             <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<鉴赏>" onclick="cg"></input>
+            <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<设置>" onclick="setting"></input>
             <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<关于>" onclick="test"></input>
             <input class="btn scroll-item" type="button" style="scroll-snap-stop:normal;" value="<退出>" onclick="b_exit"></input>
             <div style="width:100px;height:50px"> </div>
@@ -31,6 +33,7 @@
             style="opacity: {{bgOpacity}};"
             onclick="fade"
              />
+             <image src="/common/main_page_img/ICON2.png" style="top:185px;left:75px;width: 186px;object-fit:none;position:absolute"/>
         </div>
         <div>
           <image 
@@ -55,17 +58,17 @@ export default {
       bzz: false
     },
     // 单图方案只需要这两个变量！
-    currentBg: "/common/main_page_img/head.png", // 当前显示的背景图
+    currentBg: "/common/gaming/bg/cg/6.jpg", // 当前显示的背景图
     bgOpacity: 1, // 背景图透明度
+    bgO:1,
     // 背景图列表（可以无限加）
     bgList: [
-      "/common/main_page_img/head.png",
+      "/common/gaming/bg/cg/6.jpg",
       "/common/gaming/bg/cg/1.jpg",
       "/common/gaming/bg/cg/2.jpg",
       "/common/gaming/bg/cg/3.jpg",
       "/common/gaming/bg/cg/4.jpg",
       "/common/gaming/bg/cg/5.jpg",
-      "/common/gaming/bg/cg/6.jpg",
       "/common/gaming/bg/cg/7.jpg",
       "/common/gaming/bg/cg/8.jpg"
     ],
@@ -89,11 +92,15 @@ export default {
     }, 200); // 这里的200必须和CSS里的动画时长一致
   },
 
+  bgFadeOut(){
+    this.bgO = 0;
+  },
   // 其他所有函数完全不变
   onBackPress() {
     this.alert("杂鱼~");
   },
   onShow() {
+    this.bgO = 1;
     setTimeout(() => {
       this.pageClass = 'main';
     }, 10);
@@ -116,31 +123,42 @@ export default {
       },
     historySnapshot: []
     };
+    this.bgFadeOut();
       file.writeText({
         uri: "internal://files/VGE/shared/userdata.txt",
         text: JSON.stringify(resetData),
       })
-      router.replace({
+      router.push({
         uri: 'pages/gaming',
       })
     },
   start(){
-    router.replace({
+    this.bgFadeOut();
+    router.push({
       uri: 'pages/gaming',
     })
   },
+  setting(){
+    this.bgFadeOut();
+    router.push({
+      uri: 'pages/setting',
+    })
+  },
   chapter(){
-    router.replace({
+    this.bgFadeOut();
+    router.push({
       uri:'pages/chapter'
     })
   },
   test(){
-    router.replace({
+    this.bgFadeOut();
+    router.push({
       uri:'pages/test'
     })
   },
   cg(){
-    router.replace({
+    this.bgFadeOut();
+    router.push({
       uri:'pages/detail'
     })
   },
@@ -162,7 +180,12 @@ export default {
 }
 
 .head-img {
-  width:336px; height:236px; object-fit: contain; 
+  border: 2px solid rgb(255, 255, 255);
+  background-color: #000000ce;
+  left: 45px;
+  top: 25px;
+  border-radius: 24px;
+  width:246px; height:230px; object-fit: contain; 
   transition: opacity 200ms ease-in-out;
 }
 .swp {
@@ -192,7 +215,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: #000000; /* 加上这行 */
-  transition: transform 300ms ease-out;
+  transition: opacity 300ms ease-out;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -217,10 +240,12 @@ export default {
 }
 
 .scroll-container {
+  left:18px;
+  top:150px;
   position: absolute;
   align-self: center;
-  width: 100%;
-  height: 100%;
+  width: 300px;
+  height: 330px;
 }
 
 .box {

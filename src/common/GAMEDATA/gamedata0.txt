@@ -1,0 +1,87 @@
+{
+  "version": "1.0",
+  "defaultLabel": "start",
+  "labels": {
+    "start": [
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/BG_BuildingFrontGate.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_test",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "这是一个测试对话。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_test",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "测试表情"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/chara/empty.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "test"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_test",
+          "face": 2
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": ""
+        }
+      },
+      {
+        "type": "wait"
+      }
+    ]
+  }
+}

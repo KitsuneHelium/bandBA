@@ -1,0 +1,4 @@
+head_height=124
+body_height=356
+total_height=480
+width=336

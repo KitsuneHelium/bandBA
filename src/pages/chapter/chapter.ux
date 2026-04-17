@@ -1,10 +1,16 @@
 <template>
   <div class="page">
         <!-- 内置章节文件 -->
+        <image 
+        class='title-img'
+        src="/common/bg.jpg"
+        style="opacity: {{bgO}};"
+      />
         
         <input class="exit_btn" type="button" onclick="exit" value="<"/>
         <text class="title" style="color: black;margin-bottom: 10px;margin-top: 10px;">主线故事</text>
-        <scroll class="box" scroll-y="true">
+        <div class="box">
+        <scroll scroll-y="true" style="flex-direction: column;" bounces="true">
         
         
         <div class="file-item">
@@ -18,6 +24,14 @@
         <div class="file-item">
           <text class="file-name">序章-下</text>
           <input class="select-btn" type="button" onclick="selectGamedata3" value="选择"/>
+        </div>
+        <div class="file-item">
+          <text class="file-name">对策委员会篇-第一章-对策委员会奇妙的一天1</text>
+          <input class="select-btn" type="button" onclick="selectGamedata4" value="选择"/>
+        </div>
+        <div class="file-item">
+          <text class="file-name">egg</text>
+          <input class="select-btn" type="button" onclick="selectGamedata0" value="选择"/>
         </div>
       
         <!-- <div class="file-item">
@@ -40,7 +54,7 @@
         <text class="more" style="color: black;">将来会有更多的剧情加入...</text>
         <div style="width:100px;height:20px"> </div>
       </scroll>
-      
+        </div>
   
   </div>
 </template>
@@ -51,13 +65,18 @@ import file from "@system.file"
 
 export default {
   data: {
+    bgO:0,
     selectedChapter: "/common/GAMEDATA/gamedata.txt",
     userChapterUri: 'internal://files/VGE/shared/userchapter.txt',
     outerDirUri: 'internal://files/VGE/shared/GAMEDATA/',
     outerFileList: []
   },
-
+  back() {
+      this.bgO = 0;
+      router.back();
+    },
   onShow() {
+    this.bgO = 1;
     // 加载外置文件
     file.list({
       uri: this.outerDirUri,
@@ -72,10 +91,20 @@ export default {
 
   // 内置1
   selectGamedata() {
-      this.selectedChapter = "/common/GAMEDATA/gamedata.txt";
+      this.selectedChapter = "/common/GAMEDATA/gamedata1.txt";
     file.writeText({
       uri: this.userChapterUri,
       text: "/common/GAMEDATA/gamedata1.txt",
+      encoding: 'utf-8',
+      success: () => {alert('选好了！');this.go()},
+      fail: () => alert('失败了')
+    })
+  },
+  selectGamedata0() {
+      this.selectedChapter = "/common/GAMEDATA/gamedata0.txt";
+    file.writeText({
+      uri: this.userChapterUri,
+      text: "/common/GAMEDATA/gamedata0.txt",
       encoding: 'utf-8',
       success: () => {alert('选好了！');this.go()},
       fail: () => alert('失败了')
@@ -96,6 +125,16 @@ export default {
     file.writeText({
       uri: this.userChapterUri,
       text: "/common/GAMEDATA/gamedata3.txt",
+      encoding: 'utf-8',
+      success: () => {alert('选好了！');this.go()},
+      fail: () => alert('失败了')
+    })
+  },
+  selectGamedata4() {
+      this.selectedChapter = "/common/GAMEDATA/gamedata4.txt";
+    file.writeText({
+      uri: this.userChapterUri,
+      text: "/common/GAMEDATA/gamedata4.txt",
       encoding: 'utf-8',
       success: () => {alert('选好了！');this.go()},
       fail: () => alert('失败了')
@@ -134,7 +173,8 @@ export default {
   },
 
   exit() {
-    router.replace({ uri: "pages/main" })
+    this.bgO = 0;
+    router.back();
   },
   go() {
     router.replace({ uri: "pages/gaming" })
@@ -144,11 +184,19 @@ export default {
 
 <style>
 .page {
-  background-image: url(/common/bg.jpg);
+  background-color: #000000;
   flex-direction: column;
   align-items: center;
 }
 
+.title-img {
+  width: 336px; height: 480px; object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* 核心：只需要这一行！自动产生透明度过渡动画 */
+  transition: opacity 200ms ease-out;
+}
 .title {
   position: absolute;
   top:15px;

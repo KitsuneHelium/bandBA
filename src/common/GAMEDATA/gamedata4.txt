@@ -1,0 +1,2170 @@
+{
+  "version": "1.0",
+  "defaultLabel": "start",
+  "labels": {
+    "start": [
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_03.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "第一话",
+          "content": "欢迎来到对策委员会！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 3
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "老师，早上好。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "最近关于沙勒的传闻好像越来越多了，还收到很多求助信。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 11
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "这好事儿啊！说明我们马上就可以大显身手了！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "嗯……但是在其中我看到了……这样的一封信。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "我想这封信最好由老师亲自读一读。"
+        }
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "阅读信件",
+              "targetLabel": "label_1"
+            }
+          ]
+        }
+      }
+    ],
+    "label_1": [
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CommitteeRoom_Night_Blur.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "信件内容",
+          "content": "联邦搜查设的顾问老师，\n您好，我【阿拜多斯高等学院】的奥空绫音。\n虽然有些冒昧，但我写的这封信是因为有一件事，无论如何都想拜托老师帮忙。\n开门见山地说，有人正在欺负我们阿拜多斯。\n而且对方是这个地区的暴力组织。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "信件内容",
+          "content": "至于为什么会变成这样，原因很复杂……\n他们好像是盯上了我们的建筑。\n虽然我们正在拼命抵抗，\n但弹药等补给品已经所剩无几了……\n这样下去恐怕阿拜多斯迟早会被暴力组织所占领。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "信件内容",
+          "content": "所以我不得不向您求助。\n老师，可以帮帮我们吗？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start2/BG_CS_PR_03.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 33
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "唔……阿拜多斯啊……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "听说那里以前是一个非常大的自管区，但后来因为气候发生异变，街区陷入了困境。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 22
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "那边街区的规模非常大，大到曾经出现过在街上迷路的落难者呢！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 13
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "啊哈哈，真的会有那样的人吗？怎么还会有在街区里落难的人呢……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "可能是比较夸张的传闻吧……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 10
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "不过阿拜多斯被暴力组织欺负……这可不是小事……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "到底发生了什么事呢？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "出差去阿拜多斯",
+              "targetLabel": "label_2"
+            }
+          ]
+        }
+      }
+    ],
+    "label_2": [
+      {
+        "type": "chara",
+        "params": {
+          "id": "arona_new",
+          "face": 22
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "这就要出发吗？！大人的行动力就是强啊！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "阿洛娜",
+          "content": "我知道了，那我们马上出发吧！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": ""
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_Residence.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（虽然到了阿拜多斯自管区，）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（但找了好几天都没找到学院在哪，最后在街区里落难了。）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_Residence.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（叽叽喳喳）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "……嗯？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（吱——）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "……请问……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CS_Abydos_02.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "？？？",
+          "content": "……你没事吧？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "点头",
+              "targetLabel": "label_3"
+            },
+            {
+              "text": "向对方求助",
+              "targetLabel": "label_3"
+            }
+          ]
+        }
+      }
+    ],
+    "label_3": [
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "难道是遭遇了强盗？还是出了事故……？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "啊……是饿晕的？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "所以你不是流浪汉咯？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "嗯……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_Residence.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "（嗖）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "你是说来这里办事，但是好几天都没找到开门营业的店铺，所以脱水饿晕了？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "原来只是个落难者啊。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "嗯，这里本来就是这样的。很久以前就没有能买到食物的店铺了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "你从这里往外围走一点，那里倒是有个市区。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "不知道怎么走吗？\n……好吧，看来你是第一次来这一带。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "……等一下。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "jump"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "（翻找）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 1
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "来，这是能量饮料。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "虽然是为了骑车准备的……但现在我也只有这个了，应该能帮上你。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "呃，我给你找个杯子……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（咕咚咕咚）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "……！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "啊……那个……"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "……算了，没什么……没关系。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "谢谢对方救了自己",
+              "targetLabel": "label_4"
+            }
+          ]
+        }
+      }
+    ],
+    "label_4": [
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "看你的样子应该是从联邦理事会来的大人吧……路上一定很幸苦。\n你是来这里办事的吗？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "这附近只有我们学院……难道……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "你要去【阿拜多斯】？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（点头）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "……原来如此，这里好久没来过客人了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "那我来给你带路吧，其实就在这附近。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "诶？肚子实在太饿动不了？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "唔……怎么办才好呢。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（询问能不能搭车）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 1
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "可，可是这是单人用的啊……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "……"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "行吧，这个办法可能更好些。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "自行车就先放在这里……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "那……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "jump"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "（嗖）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "……呃，等等。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "呃……我刚骑完车回来……虽然没流很多汗，但是……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "我一般会用学院的浴室，洗换的衣服也在那里……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "嗯？没关系？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "……我身上的味道闻着很舒服？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "…………唔，虽然不是太懂……\n但你既然这么说的话，那应该就是没关系吧。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "……来。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "jump"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "（嗖）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "抓紧了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CommitteeRoom.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "我回来了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "你来了，白子前……辈？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_new",
+          "face": 3
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "……我操！？你背了个啥阴间？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "nonomi_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "野宫",
+          "content": "哇啊，白字亲绑来了一个大人！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 5
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "绑来？！还是尸体？！白子前辈终究还是走上了犯罪的道路吗……！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_new",
+          "face": 4
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "冷静点，一定要冷静。快找一个可以把尸体藏起来的地方！\n然后去体育用品仓库拿上铁锹和镐头……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（放下）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "不是……就是个普通的大人而已，说是来阿拜多斯做客的。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 11
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "诶？什么？不是尸体……？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "也不是绑来的，而是来阿拜多斯的客人？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "唔……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（愉快地打招呼）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "nonomi_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "野宫",
+          "content": "哇，真是吓了我一跳，阿拜多斯已经很久没来过客人了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 3
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "是，是啊……但是最近有关于访客的日程安排吗……？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "select",
+        "params": {
+          "options": [
+            {
+              "text": "“我是担任【沙勒】顾问的老师，多多关照了。”",
+              "targetLabel": "label_5"
+            }
+          ]
+        }
+      }
+    ],
+    "label_5": [
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 11
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "nonomi_new",
+          "face": 1
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 1
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "……啊，啊啊？！难道？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_new",
+          "face": 3
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "你是【联邦搜查社 沙勒】的老师？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "nonomi_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "野宫",
+          "content": "哇~就是说您接受我们的求助了！真是太好了，绫音亲！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "嗯！我们终于……有弹药和补给品支援了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 1
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "对了，快把这个消息告诉星野前辈……\n咦？星野前辈去哪儿了？"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_new",
+          "face": 11
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "会长正在隔壁睡觉呢，我去叫她。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": ""
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg_ani",
+        "params": {
+          "name": "shakex"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（砰砰砰砰砰砰砰砰）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "nonomi_new",
+          "face": 5
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "野宫",
+          "content": "枪，枪声？！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 4
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "！！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_SchoolFrontGate.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "头盔团成员",
+          "content": "哇——哈哈哈哈！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "头盔团成员",
+          "content": "打，给我打！她们现在没有弹药和补给了！立刻攻击！！马上就能占领阿拜多斯了！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "（砰砰砰砰砰砰）"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CommitteeRoom.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 11
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "哇？！有好多武装人员正在接近阿拜多斯，好像是咔哒咔哒头盔团！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 4
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "那些家伙……！！居然又来了！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_new",
+          "face": 3
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "我把星野前辈带来了！前辈，你快醒醒！打起精神啊！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "hoshino_new",
+          "face": 10
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "星野",
+          "content": "唔……还没到起床的时间呢——"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 4
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "星野前辈！头盔团又来袭击了！啊，这位是沙勒的老师。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "hoshino_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "星野",
+          "content": "哎呀~那可真是出大事了……啊，老师？你好啊。呼。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_new",
+          "face": 10
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "你醒醒啊，前辈！要出动了，快拿上装备！我们要守住阿拜多斯啊！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "hoshino_new",
+          "face": 20
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "星野",
+          "content": "哈——呼。唔……头盔团的这些家伙，竟敢打扰我睡觉。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 4
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "立刻出击。多亏老师来了，我们的弹药和补给也没问题了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "nonomi_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "野宫",
+          "content": "嗯，大家一起出动吧~"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": ""
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "老师，请您在这里支援我们吧！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CityOffice.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "哈哈哈，知道我们的厉害了吧，可恶的头盔团！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "大家都幸苦了。现在返回阿拜多斯吧。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "",
+          "content": "未完待续"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/abydos/BG_CommitteeRoom.jpg"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "下一话",
+          "content": "大人的力量真了不起！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "hoshino_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "星野",
+          "content": "哎呀~这些头盔团的家伙们是拼了小命有备而来的，可真没想到我们居然会赢诶。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 8
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "没想到居然会赢？话不能这么说吧，星野前辈……\n如果打不赢的话，那阿拜多斯就要沦为不良分子的窝点了……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 1
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "老师的指挥起了很大作用，跟我们自己战斗的时候完全不一样。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "这就是大人的力量吗……\n不仅带来了大量的资源和装备，还能指挥战斗，大人真是了不起啊。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "星野",
+          "content": "白子，以前都靠你一个人，很孤单吧？\n现在爸爸终于回家了，我这个当妈的总算可以好好睡一觉咯。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_new",
+          "face": 10
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "喂喂，别把话说得那么奇怪啦，搞的老师多不好意思啊！\n还有，会长你本来不就是想睡就睡的嘛！"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "nonomi_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "野宫",
+          "content": "对啊，这样说老师就太可怜了。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "啊哈哈……虽然说现在有点晚了，但还是欢迎您啊，老师。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "我们是阿拜多斯对策委员会。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "nonomi_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "我是委员会的秘书兼通信员，绫音……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "芹香和我同岁。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "serika_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "你好。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "芹香",
+          "content": "然后这两位，是野宫前辈和白子前辈。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "nonomi_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "野宫",
+          "content": "老师，您好啊~"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "shiroko_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "刚才，老师在路上第一个遇到的人就是我。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "白子",
+          "content": "……啊，我不是想刻意表达我们相遇很特别什么的……"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "ani",
+        "params": {
+          "name": "jump"
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "还有这位是会长，星野前辈。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "hoshino_new",
+          "face": 20
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "星野",
+          "content": "哎呀~你好啊，老师。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 0
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "就像您现在看到的，目前我们阿拜多斯陷入了危机……所以不得不向【沙勒】求助。对亏了老师即使到来，我们才能度过这次危机。"
+        }
+      },
+      {
+        "type": "wait"
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "ayane_new",
+          "face": 2
+        }
+      },
+      {
+        "type": "text",
+        "params": {
+          "speaker": "绫音",
+          "content": "如果没有老师，阿拜多斯差点就要被那群不良分子给占领了。\n真不知道该怎么感谢您……"
+        }
+      }
+    ]
+  }
+}

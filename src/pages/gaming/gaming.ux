@@ -1,44 +1,66 @@
 <template>
   <div class="page">
     <stack class='stack'>
+      <!-- 全局背景层 -->
       <image 
         alt="{{scene.bg}}" 
         class="bg-img {{bgAnimClass}}"
         style="width: 336px; height: 480px; object-fit: cover;bottom: 0px;left:0px; opacity: {{bgOpacity}};"
       />
+      
+      <!-- 新增：分层立绘层 (Body) -->
       <image 
-        show='{{scene.chara !== "" }}'
-        alt="{{scene.chara}}" 
-        class="chara-img {{charaAnimClass}}" 
-        style="width: 336px;object-fit: contain; bottom:0px; left:0px;"
+        show="{{charaComposite.id}}"
+        
+        class="chara-composite-body {{charaAnimClass}}"
+        style="width: 336px; object-fit: contain; bottom: -50px; left: 0px; top: {{charaComposite.headHeight+50}}px; opacity: {{charaOpacity}};"
+        src="/common/chara/{{charaComposite.id}}/body.png"
       />
+      
+      <!-- 新增：分层立绘层 (Face) -->
+      <image 
+        show="{{charaComposite.id}}"
+        
+        class="chara-composite-face {{charaAnimClass}}"
+        style="width: 336px; object-fit: contain; bottom: -50px; left: 0px; top: 50px; opacity: {{charaOpacity}};"
+        src="/common/chara/{{charaComposite.id}}/face_{{charaComposite.face}}.png"
+      />
+
+      <!-- 角色立绘层：旧模式 (保持原样) -->
+       <div class="chara-img {{charaAnimClass}}" style="width: 336px;object-fit: contain; bottom:0px; left:0px; opacity: {{charaOpacity}};">
+        <!-- <image alt="/common/logo.png" style="width: 336px;object-fit: contain;" /> -->
+        <image 
+          show='{{scene.chara !== "" && !charaComposite.id}}'
+          alt="{{scene.chara}}" 
+          class="chara-img" 
+          style="width: 336px;object-fit: contain; bottom:0px; left:0px; opacity: {{charaOpacity}};"
+        />
+      </div>
+      
       <image 
         alt="/common/gaming/bt.png" 
         class="tx-img" 
-        style="height: {{color_r*10+50}}px;"
+        style="height: {{config.fontSize*10+50}}px;"
       />
-    <swiper class="swiper" index="1">
+      
+      <text class="txt-text" style="font-size: {{config.fontSize}}px;">{{displaySpeaker}}{{typingTxt}}</text>
+    <!-- 左右滑动容器 -->
+    <swiper class="swiper" index="1" indicator="false">
+      <!-- 第一页：设置面板 + 四大金刚键 -->
       <stack >
-        <div class='blank'>
-          <text class='set_txt'>设置</text>
-        </div>
-        <div class='game_settings'>
+        
+        <div class='blank' >
+          
         <scroll scroll-y="true" style="flex-direction: column;" bounces="true">
-          <text class='is_debug'>调试日志</text>
-          <switch checked="{{config.debugMode}}" class="debug_switch" @change="toggleDebugMode"></switch>
-          <text class='typing-switch-text'>打字机效果</text>
-          <switch checked="{{config.enableTyping}}" class="typing-switch" @change="toggleTypingSwitch"></switch>
-          <text class='auto-next-text'>自动播放</text>
-          <switch checked="{{config.autoNext}}" class="auto-next-switch" @change="toggleAutoNextSwitch"></switch>
-          <div style="width:100px;height:30px"> </div>
-          <text class='testt' style="margin-bottom:20px">字体大小</text>
-          <slider class="slider_r" style="selected-color: rgb(0, 128, 225);" min="20" max="50" step="1" value="{{ color_r }}" onchange="r"></slider>
-          <text class='testt' style="margin-bottom:20px">打字机速度</text>
-          <slider class="slider_g" style="selected-color: rgb(0, 128, 255);" min="10" max="100" step="10" value="{{ config.typingSpeed }}" onchange="g"></slider>
-          <!-- <slider class="slider_b" style="selected-color: rgb(0, 0, {{color_b}});" min="0" max="255" step="16" value="{{ color_b }}" onchange="b"></slider> -->
-          <text class='testt' style="margin-bottom:20px">目前只有这一些...</text>
+          <input class="exit_btn" onclick="handleExit" value='<'/>
+          <input class="goback_btn" onclick="handleGoback" value='回退' />
+          <input class="save-btn" onclick="handleSave" value='保存' />
+          <input class="load-btn" onclick="handleLoad" value='加载' />
+          <input class="load-btn" onclick="handleAuto" value='自动' />
+          <input class="settings-btn" onclick="handleOpenSettings" value='设置' />
         </scroll>
         </div>
+        
         <text class="debug-text" show="{{config.debugMode}}">
 调试信息：
 {{debugInfo}}
@@ -47,24 +69,15 @@
 当前索引：{{currentCmdIndex}}
 历史记录数：{{pageHistory.length}}
         </text>
-        <input class="exit_btn" onclick="handleExit" value='<'/>
-        <input class="goback_btn" onclick="handleGoback" value='回退' />
-        <input class="save-btn" onclick="handleSave" value='保存' />
-        <input class="load-btn" onclick="handleLoad" value='加载' />
       </stack>
+      
+      <!-- 第二页：游戏主画面 -->
       <stack class="stack">
         <text class='exit-text' if="{{exiting}}">{{exit_txt}}</text>
         <text class='exit-text' if="{{config.debugMode}}" >y:{{ani_y}} x:{{ani_x}}</text>
-
-        
-
-        
-        <!-- <scroll class='blank3' scroll-y="true" style="flex: 1; overflow-y: auto;" >
-          
-        </scroll> -->
-        <text class="txt-text" style="font-size: {{color_r}}px;">{{displaySpeaker}}{{typingTxt}}</text>
         
         <div class='blank2' onclick="handleScreenClick"></div>
+        
         <picker 
           class="option-picker" 
           type="text" 
@@ -73,6 +86,7 @@
           onchange="handleOptionSelect"
           show="{{hasOptions}}"
         ></picker>
+        
         <div class="warp-confirm" if="{{showWarpConfirm}}">
           <div class="warp-box">
             <text class="warp-title">是否跳转到新章节？</text>
@@ -91,7 +105,6 @@
 <script>
 import router from '@system.router'
 import file from '@system.file'
-import app from '@system.app'
 import prompt from '@system.prompt'
 
 export default {
@@ -100,7 +113,7 @@ export default {
       bg: "/common/bg.jpg",
       chara: "/common/empty.png",
       speaker: "",
-      content: "点击屏幕开始..."
+      content: "（右滑屏幕出现菜单）点击屏幕开始..."
     },
     scriptData: null,
     currentLabel: "start",
@@ -109,13 +122,12 @@ export default {
     isWaiting: false,
     globalVars: {},
     config: {
-      debugMode: false,
-      enableTyping: true,
-      autoNext: false,
-      typingSpeed: 50,
-      bgmVolume: 80,
-      seVolume: 100
-    },
+        debugMode: false,
+        enableTyping: true,
+        autoNext: false,
+        typingSpeed: 50,
+        fontSize: 20
+      },
     bgAnimClass: "",
     charaAnimClass: "",
     animTimer: null,
@@ -148,15 +160,28 @@ export default {
     saveFileName: "VGE/shared/userdata.txt",
     configFileName: "VGE/shared/userconfig.txt",
     chapterFileName: "VGE/shared/userchapter.txt",
-    defaultScriptPath: "/Common/GAMEDATA/gamedata1.txt", // ✅ 统一为 .txt
+    defaultScriptPath: "/common/GAMEDATA/gamedata1.txt",
     
-    // === 新增：背景淡入淡出控制 ===
-    bgOpacity: 1,           // 背景透明度
-    bgTransitionTimer: null,// 背景动画定时器（用于打断）
-    isBgChanging: false,    // 背景是否正在切换中
+    bgOpacity: 1,
+    bgTransitionTimer: null,
+    isBgChanging: false,
+
+    // === 新增：角色淡入淡出控制 ===
+    charaOpacity: 1,
+    charaTransitionTimer: null,
     // ===============================
 
-    lastCmdWasAnimation: false
+    lastCmdWasAnimation: false,
+
+    // === 新增：分层立绘数据 ===
+    charaComposite: {
+      id: "",        // 角色ID，如 "serika"
+      face: 0,       // 当前表情编号
+      headHeight: 0, // 从 config.txt 读取的头部高度
+      bodyHeight: 0,
+      totalHeight: 480
+    },
+    charaConfigCache: {} // 缓存已读取的 config.txt
   },
 
   computed: {
@@ -166,6 +191,9 @@ export default {
     }
   },
 
+  onShow() {
+    this.loadConfig();
+  },
   onReady() {
     this.log("系统启动");
     this.initGame();
@@ -185,6 +213,13 @@ export default {
     }
   },
 
+  handleAuto(){
+    if (this.config.autoNext === true){
+      this.pop("自动播放关闭");
+      this.config.autoNext = false;
+    }else{this.config.autoNext = true;this.pop("自动播放开启");this.handleScreenClick();}
+    this.saveConfig();
+  },
   readAssetFile(assetPath) {
     return new Promise((resolve, reject) => {
       file.readText({
@@ -311,184 +346,346 @@ export default {
   },
 
   async runCommands() {
-  if (!this.isRunning) return;
-  const commands = this.scriptData.labels[this.currentLabel];
-  if (!commands) return;
+    if (!this.isRunning) return;
+    const commands = this.scriptData.labels[this.currentLabel];
+    if (!commands) return;
 
-  while (this.currentCmdIndex < commands.length) {
-    const cmd = commands[this.currentCmdIndex];
-    this.currentCmdIndex++;
-    this.log("执行: " + cmd.type);
-    this.debugInfo = "执行: " + cmd.type;
-    
-    // 等待当前命令执行完毕（如果是 bg 命令，会等动画）
-    const shouldBreak = await this.executeCommand(cmd, commands, this.currentCmdIndex);
-    if (shouldBreak) {
-      this.isRunning = false;
-      return;
-    }
-  }
-  this.isRunning = false;
-},
-
-// ==========================================
-// === 新增：核心背景切换逻辑 (含打断机制) ===
-// ==========================================
-changeBg(newPath) {
-  return new Promise((resolve) => {
-    // 1. 动画打断逻辑：如果上一个动画还没结束，强制结束
-    if (this.bgTransitionTimer) {
-      clearTimeout(this.bgTransitionTimer);
-      this.bgTransitionTimer = null;
-    }
-    
-    // 如果是同一张图，不做任何处理
-    if (this.scene.bg === newPath) {
-      resolve();
-      return;
-    }
-
-    // 2. 开始淡出
-    this.bgOpacity = 0;
-    
-    // 3. 等待淡出完成 (400ms)
-    this.bgTransitionTimer = setTimeout(() => {
-      // 4. 真正切换图片资源
-      this.scene.bg = newPath;
+    while (this.currentCmdIndex < commands.length) {
+      const cmd = commands[this.currentCmdIndex];
+      this.currentCmdIndex++;
+      this.log("执行: " + cmd.type);
+      this.debugInfo = "执行: " + cmd.type;
       
-      // 5. 等待一帧，确保 DOM 更新图片 src
+      const shouldBreak = await this.executeCommand(cmd, commands, this.currentCmdIndex);
+      if (shouldBreak) {
+        this.isRunning = false;
+        return;
+      }
+    }
+    this.isRunning = false;
+  },
+
+  changeBg(newPath) {
+    return new Promise((resolve) => {
+      if (this.bgTransitionTimer) {
+        clearTimeout(this.bgTransitionTimer);
+        this.bgTransitionTimer = null;
+      }
+      
+      if (this.scene.bg === newPath) {
+        resolve();
+        return;
+      }
+
+      this.bgOpacity = 0;
+      
       this.bgTransitionTimer = setTimeout(() => {
-        // 6. 开始淡入
-        this.bgOpacity = 1;
+        this.scene.bg = newPath;
         
-        // 7. 等待淡入完成
         this.bgTransitionTimer = setTimeout(() => {
-          this.bgTransitionTimer = null;
-          this.isBgChanging = false;
-          resolve(); // 通知剧情可以继续了
-        }, 400); // 这里的时间要和 CSS transition 一致
-      }, 16);
-    }, 400);
-  });
-},
+          this.bgOpacity = 1;
+          
+          this.bgTransitionTimer = setTimeout(() => {
+            this.bgTransitionTimer = null;
+            this.isBgChanging = false;
+            resolve();
+          }, 400);
+        }, 16);
+      }, 400);
+    });
+  },
 
-async executeCommand(cmd, commands, nextIndex) {
-  switch (cmd.type) {
-    case "bg":
-      // 调用专门的背景切换函数，并等待它完成
-      await this.changeBg(cmd.params.path);
-      this.lastCmdWasAnimation = false;
-      return false;
-      
-    case "chara":
-      this.scene.chara = cmd.params.path;
-      this.lastCmdWasAnimation = false;
-      return false;
-      
-    case "text":
-      // ... text 逻辑保持不变 ...
-      this.scene.speaker = cmd.params.speaker || "";
-      let content = cmd.params.content || "";
-      let forceTyping = false;
-      if (this.lastCmdWasAnimation) {
-        if (!content || content.trim() === "") content = "...";
-        forceTyping = true;
-      } else {
-        if (!content || content.trim() === "") content = "...";
+  // ==========================================
+  // === 保留：原有的 changeChara 函数 ===
+  // ==========================================
+  changeChara(newPath) {
+    return new Promise((resolve) => {
+      // 1. 清理旧定时器
+      if (this.charaTransitionTimer) {
+        clearTimeout(this.charaTransitionTimer);
+        this.charaTransitionTimer = null;
       }
-      this.scene.content = content;
-      this.startTyping(this.scene.content, forceTyping);
-      this.lastCmdWasAnimation = false;
-      return true;
+
+      const oldPath = this.scene.chara;
       
-    case "ani":
-      // ... ani 逻辑保持不变 ...
-      this.playCharacterAni(cmd.params.name);
-      this.lastCmdWasAnimation = true;
-      if (nextIndex < commands.length) {
-        const nextCmd = commands[nextIndex];
-        if (nextCmd.type === "wait") {
-          this.scene.speaker = "";
-          this.scene.content = "...";
-          this.startTyping("...", true);
-          return true;
-        }
+      // 2. 判断是否需要动画：
+      // 规则：旧路径包含 "empty.png" 或者 新路径包含 "empty.png"
+      const isOldEmpty = oldPath.indexOf("empty.png") !== -1;
+      const isNewEmpty = newPath.indexOf("empty.png") !== -1;
+      const needAnimation = isOldEmpty || isNewEmpty;
+
+      // 3. 如果不需要动画，或者是同一张图，直接切换
+      if (oldPath === newPath || !needAnimation) {
+        this.scene.chara = newPath;
+        this.charaOpacity = 1; // 确保透明度正常
+        resolve();
+        return;
       }
-      return false;
+
+      // 4. 需要动画：执行淡入淡出
+      this.log("角色切换动画触发: " + oldPath + " -> " + newPath);
       
-    case "bg_ani":
-      // ... bg_ani 逻辑保持不变 ...
-      this.playBgAni(cmd.params.name);
-      this.lastCmdWasAnimation = true;
-      if (nextIndex < commands.length) {
-        const nextCmd = commands[nextIndex];
-        if (nextCmd.type === "wait") {
-          this.scene.speaker = "";
-          this.scene.content = "...";
-          this.startTyping("...", true);
-          return true;
-        }
+      // 第一步：淡出
+      this.charaOpacity = 0;
+      
+      this.charaTransitionTimer = setTimeout(() => {
+        // 第二步：换图
+        this.scene.chara = newPath;
+        
+        // 等待一帧
+        this.charaTransitionTimer = setTimeout(() => {
+          // 第三步：淡入
+          this.charaOpacity = 1;
+          
+          // 第四步：完成
+          this.charaTransitionTimer = setTimeout(() => {
+            this.charaTransitionTimer = null;
+            resolve();
+          }, 400); // 这里的时间要和 CSS transition 一致
+        }, 16);
+      }, 400);
+    });
+  },
+
+  // ==========================================
+  // === 新增：分层立绘 changeCharaComposite ===
+  // ==========================================
+  changeCharaComposite(roleId, faceIndex) {
+    return new Promise((resolve) => {
+      // 1. 清理旧定时器
+      if (this.charaTransitionTimer) {
+        clearTimeout(this.charaTransitionTimer);
+        this.charaTransitionTimer = null;
       }
-      return false;
+
+      const oldId = this.charaComposite.id;
+      const oldFace = this.charaComposite.face;
       
-    case "wait":
-      // ... wait 逻辑保持不变 ...
-      this.isWaiting = true;
-      this.lastCmdWasAnimation = false;
-      if (this.config.autoNext) {
-        this.clearAutoNextTimer();
-        this.autoNextTimer = setTimeout(() => {
-          if (this.isWaiting) {
-            this.isWaiting = false;
-            this.isRunning = true;
-            this.runCommands(); // 注意：这里调用 runCommands() 不需要 await
+      // 2. 判断是否需要动画
+      const isOldEmpty = oldId === "";
+      const isNewEmpty = roleId === "";
+      const needAnimation = isOldEmpty || isNewEmpty;
+
+      // 3. 特殊情况：同一角色，只换表情（秒切，无动画）
+      if (oldId === roleId && oldId !== "") {
+        this.charaComposite.face = faceIndex;
+        this.charaOpacity = 1;
+        resolve();
+        return;
+      }
+
+      // 4. 如果是同一种状态，直接返回
+      if (oldId === roleId && oldFace === faceIndex) {
+        resolve();
+        return;
+      }
+
+      // 5. 加载 config.txt (如果需要)
+      const loadConfigAndShow = async () => {
+        if (roleId && !this.charaConfigCache[roleId]) {
+          try {
+            const configPath = `/common/chara/${roleId}/config.txt`;
+            const configText = await this.readAssetFile(configPath);
+            const config = {};
+            const lines = configText.split('\n');
+            for (let line of lines) {
+              if (line.indexOf('=') !== -1) {
+                const [key, val] = line.trim().split('=');
+                config[key] = parseInt(val) || val;
+              }
+            }
+            this.charaConfigCache[roleId] = config;
+            this.log(`角色配置加载成功: ${roleId} (head=${config.head_height})`);
+          } catch (e) {
+            this.log(`角色配置加载失败: ${roleId}, 使用默认值`);
+            this.charaConfigCache[roleId] = {
+              head_height: 180,
+              body_height: 300,
+              total_height: 480,
+              width: 336
+            };
           }
-        }, 800);
-      }
-      return true;
-      
-    case "goto":
-      this.pushHistory();
-      this.jumpToLabel(cmd.params.label, 0);
-      return true;
-      
-    case "select":
-      this.showOptions(cmd.params.options);
-      this.lastCmdWasAnimation = false;
-      return true;
-      
-    case "setVar":
-      this.globalVars[cmd.params.name] = cmd.params.value;
-      this.lastCmdWasAnimation = false;
-      return false;
-      
-    case "if":
-      const condition = this.evalCondition(cmd.params.condition);
-      const target = condition ? cmd.params.trueLabel : cmd.params.falseLabel;
-      this.pushHistory();
-      this.jumpToLabel(target, 0);
-      return true;
-      
-    case "warp":
-      this.showWarpConfirm = true;
-      this.warpTargetPath = cmd.params.path;
-      this.isWaiting = true;
-      this.lastCmdWasAnimation = false;
-      return true;
-      
-    case "end":
-      this.scene.content = "剧情结束";
-      this.typingTxt = this.scene.content;
-      this.isWaiting = true;
-      this.lastCmdWasAnimation = false;
-      return true;
-      
-    default:
-      this.log("未知指令: " + cmd.type);
-      this.lastCmdWasAnimation = false;
-      return false;
-  }
-},
+        }
+
+        // 6. 执行切换
+        if (needAnimation) {
+          // 需要淡入淡出
+          this.charaOpacity = 0;
+          
+          this.charaTransitionTimer = setTimeout(() => {
+            // 切换数据
+            if (roleId) {
+              const cfg = this.charaConfigCache[roleId];
+              this.charaComposite = {
+                id: roleId,
+                face: faceIndex,
+                headHeight: cfg.head_height || 180,
+                bodyHeight: cfg.body_height || 300,
+                totalHeight: cfg.total_height || 480
+              };
+              // 同时清空旧模式，防止冲突
+              this.scene.chara = "/common/empty.png";
+            } else {
+              // 清空分层模式
+              this.charaComposite = { id: "", face: 0, headHeight: 0, bodyHeight: 0, totalHeight: 480 };
+            }
+            
+            this.charaTransitionTimer = setTimeout(() => {
+              this.charaOpacity = 1;
+              
+              this.charaTransitionTimer = setTimeout(() => {
+                this.charaTransitionTimer = null;
+                resolve();
+              }, 400);
+            }, 16);
+          }, 400);
+        } else {
+          // 直接切换
+          if (roleId) {
+            const cfg = this.charaConfigCache[roleId];
+            this.charaComposite = {
+              id: roleId,
+              face: faceIndex,
+              headHeight: cfg.head_height || 180,
+              bodyHeight: cfg.body_height || 300,
+              totalHeight: cfg.total_height || 480
+            };
+            this.scene.chara = "/common/empty.png";
+          } else {
+            this.charaComposite = { id: "", face: 0, headHeight: 0, bodyHeight: 0, totalHeight: 480 };
+          }
+          this.charaOpacity = 1;
+          resolve();
+        }
+      };
+
+      loadConfigAndShow();
+    });
+  },
+
+  async executeCommand(cmd, commands, nextIndex) {
+    switch (cmd.type) {
+      case "bg":
+        await this.changeBg(cmd.params.path);
+        this.lastCmdWasAnimation = false;
+        return false;
+        
+      case "chara":
+        // === 新增：参数判断分发 ===
+        if (cmd.params.id) {
+          // 新格式：{"id": "serika", "face": 0}
+          await this.changeCharaComposite(cmd.params.id, cmd.params.face || 0);
+        } else if (cmd.params.path) {
+          // 旧格式：{"path": "..."}
+          // 先清空分层模式
+          if (this.charaComposite.id) {
+            await this.changeCharaComposite("", 0);
+          }
+          await this.changeChara(cmd.params.path);
+        }
+        this.lastCmdWasAnimation = false;
+        return false;
+        
+      case "text":
+        this.scene.speaker = cmd.params.speaker || "";
+        let content = cmd.params.content || "";
+        let forceTyping = false;
+        if (this.lastCmdWasAnimation) {
+          if (!content || content.trim() === "") content = "...";
+          forceTyping = true;
+        } else {
+          if (!content || content.trim() === "") content = "...";
+        }
+        this.scene.content = content;
+        this.startTyping(this.scene.content, forceTyping);
+        this.lastCmdWasAnimation = false;
+        return true;
+        
+      case "ani":
+        this.playCharacterAni(cmd.params.name);
+        this.lastCmdWasAnimation = true;
+        if (nextIndex < commands.length) {
+          const nextCmd = commands[nextIndex];
+          if (nextCmd.type === "wait") {
+            this.scene.speaker = "";
+            this.scene.content = "...";
+            this.startTyping("...", true);
+            return true;
+          }
+        }
+        return false;
+        
+      case "bg_ani":
+        this.playBgAni(cmd.params.name);
+        this.lastCmdWasAnimation = true;
+        if (nextIndex < commands.length) {
+          const nextCmd = commands[nextIndex];
+          if (nextCmd.type === "wait") {
+            this.scene.speaker = "";
+            this.scene.content = "...";
+            this.startTyping("...", true);
+            return true;
+          }
+        }
+        return false;
+        
+      case "wait":
+        this.isWaiting = true;
+        this.lastCmdWasAnimation = false;
+        if (this.config.autoNext) {
+          this.clearAutoNextTimer();
+          this.autoNextTimer = setTimeout(() => {
+            if (this.isWaiting) {
+              this.isWaiting = false;
+              this.isRunning = true;
+              this.runCommands();
+            }
+          }, 800);
+        }
+        return true;
+        
+      case "goto":
+        this.pushHistory();
+        this.jumpToLabel(cmd.params.label, 0);
+        return true;
+        
+      case "select":
+        this.showOptions(cmd.params.options);
+        this.lastCmdWasAnimation = false;
+        return true;
+        
+      case "setVar":
+        this.globalVars[cmd.params.name] = cmd.params.value;
+        this.lastCmdWasAnimation = false;
+        return false;
+        
+      case "if":
+        const condition = this.evalCondition(cmd.params.condition);
+        const target = condition ? cmd.params.trueLabel : cmd.params.falseLabel;
+        this.pushHistory();
+        this.jumpToLabel(target, 0);
+        return true;
+        
+      case "warp":
+        this.showWarpConfirm = true;
+        this.warpTargetPath = cmd.params.path;
+        this.isWaiting = true;
+        this.lastCmdWasAnimation = false;
+        return true;
+        
+      case "end":
+        this.scene.content = "剧情结束";
+        this.typingTxt = this.scene.content;
+        this.isWaiting = true;
+        this.lastCmdWasAnimation = false;
+        return true;
+        
+      default:
+        this.log("未知指令: " + cmd.type);
+        this.lastCmdWasAnimation = false;
+        return false;
+    }
+  },
 
   evalCondition(cond) {
     try {
@@ -532,7 +729,9 @@ async executeCommand(cmd, commands, nextIndex) {
       label: this.currentLabel,
       index: this.currentCmdIndex - 1,
       scene: JSON.parse(JSON.stringify(this.scene)),
-      globalVars: JSON.parse(JSON.stringify(this.globalVars))
+      globalVars: JSON.parse(JSON.stringify(this.globalVars)),
+      // 新增：保存分层立绘状态
+      charaComposite: JSON.parse(JSON.stringify(this.charaComposite))
     });
     this.log("历史记录已保存 (跳转点): " + this.currentLabel + " @ " + (this.currentCmdIndex - 1));
   },
@@ -663,6 +862,10 @@ async executeCommand(cmd, commands, nextIndex) {
     
     this.scene = JSON.parse(JSON.stringify(prevState.scene));
     this.globalVars = JSON.parse(JSON.stringify(prevState.globalVars));
+    // 新增：恢复分层立绘状态
+    if (prevState.charaComposite) {
+      this.charaComposite = JSON.parse(JSON.stringify(prevState.charaComposite));
+    }
     this.currentLabel = prevState.label;
     this.fastForwardToIndex(prevState.index);
   },
@@ -702,37 +905,60 @@ async executeCommand(cmd, commands, nextIndex) {
   },
 
   executeCommandSilent(cmd) {
-  switch (cmd.type) {
-    case "bg":
-      // 快进时：直接切图，强制透明度为1，清除所有动画定时器
-      this.scene.bg = cmd.params.path;
-      this.bgOpacity = 1; 
-      if (this.bgTransitionTimer) {
-        clearTimeout(this.bgTransitionTimer);
-        this.bgTransitionTimer = null;
-      }
-      break;
-    case "chara":
-      this.scene.chara = cmd.params.path;
-      break;
-    case "text":
-      this.scene.speaker = cmd.params.speaker || "";
-      this.scene.content = cmd.params.content || "...";
-      break;
-    case "ani":
-    case "bg_ani":
-      break;
-    case "wait":
-    case "select":
-      break;
-    case "setVar":
-      this.globalVars[cmd.params.name] = cmd.params.value;
-      break;
-    case "goto":
-      break;
-  }
-},
+    switch (cmd.type) {
+      case "bg":
+        this.scene.bg = cmd.params.path;
+        this.bgOpacity = 1; 
+        if (this.bgTransitionTimer) {
+          clearTimeout(this.bgTransitionTimer);
+          this.bgTransitionTimer = null;
+        }
+        break;
+      case "chara":
+        // 快进时：兼容两种模式
+        if (cmd.params.id) {
+          // 新格式
+          if (this.charaConfigCache[cmd.params.id]) {
+            const cfg = this.charaConfigCache[cmd.params.id];
+            this.charaComposite = {
+              id: cmd.params.id,
+              face: cmd.params.face || 0,
+              headHeight: cfg.head_height || 180,
+              bodyHeight: cfg.body_height || 300,
+              totalHeight: cfg.total_height || 480
+            };
+            this.scene.chara = "/common/empty.png";
+          }
+        } else {
+          // 旧格式
+          this.scene.chara = cmd.params.path;
+          this.charaComposite = { id: "", face: 0, headHeight: 0, bodyHeight: 0, totalHeight: 480 };
+        }
+        this.charaOpacity = 1;
+        if (this.charaTransitionTimer) {
+          clearTimeout(this.charaTransitionTimer);
+          this.charaTransitionTimer = null;
+        }
+        break;
+      case "text":
+        this.scene.speaker = cmd.params.speaker || "";
+        this.scene.content = cmd.params.content || "...";
+        break;
+      case "ani":
+      case "bg_ani":
+        break;
+      case "wait":
+      case "select":
+        break;
+      case "setVar":
+        this.globalVars[cmd.params.name] = cmd.params.value;
+        break;
+      case "goto":
+        break;
+    }
+  },
   async handleSave(silent) {
+    this.pop("存档成功")
     const saveData = {
       version: this.scriptData.version || "1.0",
       timestamp: Date.now(),
@@ -741,7 +967,9 @@ async executeCommand(cmd, commands, nextIndex) {
         label: this.currentLabel,
         index: this.currentCmdIndex > 0 ? this.currentCmdIndex - 1 : 0,
         globalVars: this.globalVars,
-        scene: this.scene
+        scene: this.scene,
+        // 新增：保存分层立绘状态
+        charaComposite: this.charaComposite
       },
       historySnapshot: JSON.parse(JSON.stringify(this.pageHistory))
     };
@@ -749,11 +977,13 @@ async executeCommand(cmd, commands, nextIndex) {
     try {
       await this.writeDataFile(this.saveFileName, JSON.stringify(saveData));
       if (!silent) {
-        this.alert("存档成功 (含回退历史)");
+        this.pop("存档成功")
+        this.log("存档成功 saved");
       }
+      
       this.log("存档成功 (含回退历史)");
     } catch (e) {
-      this.alert("存档失败");
+      this.alert("存档失败" + e.message);
       this.log("存档失败: " + e.message);
     }
   },
@@ -770,6 +1000,27 @@ async executeCommand(cmd, commands, nextIndex) {
       this.globalVars = saveData.core.globalVars || {};
       this.scene = saveData.core.scene || this.scene;
       this.currentLabel = saveData.core.label;
+      
+      // 新增：读取分层立绘状态
+      if (saveData.core.charaComposite) {
+        this.charaComposite = saveData.core.charaComposite;
+        // 预加载 config 到缓存
+        if (this.charaComposite.id) {
+          try {
+            const configPath = `/common/chara/${this.charaComposite.id}/config.txt`;
+            const configText = await this.readAssetFile(configPath);
+            const config = {};
+            const lines = configText.split('\n');
+            for (let line of lines) {
+              if (line.indexOf('=') !== -1) {
+                const [key, val] = line.trim().split('=');
+                config[key] = parseInt(val) || val;
+              }
+            }
+            this.charaConfigCache[this.charaComposite.id] = config;
+          } catch (e) {}
+        }
+      }
       
       if (saveData.historySnapshot && Array.isArray(saveData.historySnapshot)) {
         this.pageHistory = saveData.historySnapshot;
@@ -899,31 +1150,31 @@ async executeCommand(cmd, commands, nextIndex) {
     shake();
   },
 
-  toggleDebugMode(e) {
-    this.config.debugMode = e.checked;
-    this.saveConfig();
-  },
-  toggleTypingSwitch(e) {
-    this.config.enableTyping = e.checked;
-    if (!this.config.enableTyping && this.isTyping) {
-      this.skipTyping();
-    }
-    this.saveConfig();
-  },
-  toggleAutoNextSwitch(e) {
-    this.config.autoNext = e.checked;
-    if (this.config.autoNext && this.isWaiting && !this.hasOptions) {
-      this.triggerAutoNext();
-    }
-    this.saveConfig();
+  handleOpenSettings() {
+    this.config.enableTyping = false;
+    router.push({
+      uri: 'pages/setting',
+    })
   },
 
-  // ✅ 核心修复：完善 confirmWarp，统一使用 writeDataFile
+  handleExit() {
+    this.skipTyping();
+    this.stopAllAnimations();
+    this.exiting = true;
+    this.exit_txt = "正在退出";
+    router.back();
+    // try {
+    //   this.pop("退出...")
+    //   router.back();
+    // } catch (e) {
+    //   this.pop(e)
+    //   this.$app.exit();
+    // }
+  },
+
   confirmWarp() {
-    // 1. 保存新章节路径
     this.writeDataFile(this.chapterFileName, this.warpTargetPath)
       .then(() => {
-        // 2. 构建完整的重置存档数据（包含 historySnapshot）
         const resetSave = {
           version: "1.0",
           timestamp: 0,
@@ -937,20 +1188,18 @@ async executeCommand(cmd, commands, nextIndex) {
               chara: "/common/empty.png",
               speaker: "",
               content: "点击屏幕开始..."
-            }
+            },
+            charaComposite: { id: "", face: 0, headHeight: 0, bodyHeight: 0, totalHeight: 480 }
           },
           historySnapshot: []
         };
-        // 3. 写入重置存档
         return this.writeDataFile(this.saveFileName, JSON.stringify(resetSave));
       })
       .then(() => {
-        // 4. 刷新页面重启游戏
         router.replace({ uri: "pages/gaming" });
       })
       .catch((err) => {
         this.log("Warp 失败: " + JSON.stringify(err));
-        // 即使失败也尝试刷新
         router.replace({ uri: "pages/gaming" });
       });
   },
@@ -959,18 +1208,6 @@ async executeCommand(cmd, commands, nextIndex) {
     this.showWarpConfirm = false;
     this.isWaiting = false;
     this.typingTxt = "已取消跳转";
-  },
-
-  handleExit() {
-    this.skipTyping();
-    this.stopAllAnimations();
-    this.exiting = true;
-    this.exit_txt = "正在退出";
-    try {
-      router.replace({ uri: "pages/main" });
-    } catch (e) {
-      app.exit();
-    }
   },
 
   log(msg) {
@@ -982,6 +1219,9 @@ async executeCommand(cmd, commands, nextIndex) {
   alert(msg) {
     prompt.showToast({ message: msg, duration: 2000 });
   },
+  pop(msg) {
+    prompt.showToast({ message: msg, duration: 1000 });
+  },
   r(e) { this.color_r = e.progress },
   g(e) { this.config.typingSpeed = e.progress },
   b(e) { this.color_b = e.progress },
@@ -990,12 +1230,15 @@ async executeCommand(cmd, commands, nextIndex) {
     this.stopTypingTimer();
     this.clearAutoNextTimer();
     this.stopAllAnimations();
+    // 清理角色动画定时器
+    if (this.charaTransitionTimer) {
+      clearTimeout(this.charaTransitionTimer);
+    }
   }
 };
 </script>
 
 <style>
-/* 样式完全保留 */
 .page {
   width: 100%;
   height: 100%;
@@ -1016,13 +1259,19 @@ async executeCommand(cmd, commands, nextIndex) {
   height: 100%;
   position: relative;
 }
-.blank {
+.blank .bl{
   border-radius: 16px;
   position: absolute;
-  top: 100px;
+  top: 30px;
   left: 10px;
-  width: 316px; height: 336px;
+  width: 74px; height: auto;
   background-color:rgba(255, 255, 255, 0.6);
+}
+
+.bl {
+  top: 34px;
+  height: 352px;
+  background-color:#00000000;
 }
 .blank2 {
   position: absolute;
@@ -1031,20 +1280,11 @@ async executeCommand(cmd, commands, nextIndex) {
   width: 336px; height: 480px;
   background-color:rgba(0,0,0,0);
 }
-.blank3 {
-  position: absolute;
-  bottom: 18px;
-  left: 18px;
-  width: 300px;
-  height: 100px;
-  background-color:rgba(0, 0, 0, 0.616);
-}
 .tx-img {
   position: absolute;
   bottom: 0px;
   right: 0px;
   width: 336px;
-  
   z-index: 10;
 }
 .chara-img {
@@ -1055,9 +1295,22 @@ async executeCommand(cmd, commands, nextIndex) {
   height: 400px;
   transform: translateX(0px);
   transform: translateY(0px);
+  /* === 新增：角色透明度过渡 === */
+  transition: opacity 400ms ease-in-out;
 }
+
+/* === 新增：分层立绘样式 === */
+.chara-composite-body, .chara-composite-face {
+  object-fit: contain;
+  position: absolute;
+  margin: 0 auto;
+  width: 336px;
+  transform: translateX(0px);
+  transform: translateY(0px);
+  transition: opacity 400ms ease-in-out;
+}
+
 .bg-img {
-  /* 原有属性 */
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1065,10 +1318,59 @@ async executeCommand(cmd, commands, nextIndex) {
   height: 480px;
   transform: translateX(0px);
   transform: translateY(0px);
-  /* === 新增：透明度过渡 === */
   transition: opacity 400ms ease-in-out;
 }
 
+/* 四大金刚键样式 */
+.goback_btn, .exit_btn, .save-btn, .load-btn .settings-btn{
+  color: #000000be; 
+  background-color: rgba(255, 255, 255, 0.788); 
+  font-size: 24px;
+  margin: 5px;
+  width: 64px; 
+  height: 64px;
+}
+
+/* 其他样式 */
+.set_txt { position: absolute; bottom: 0px; font-size: 36px; color: #111111;}
+.is_debug, .typing-switch-text, .auto-next-text { color: #111111; top: 20px; left: 20px; font-size: 24px; }
+.debug_switch, .typing-switch, .auto-next-switch { top: 20px; left: 20px; }
+.slider_r, .slider_g { left: 30px; margin-top: 20px; margin-bottom: 20px; padding-left: 0; padding-right: 0; }
+.testt{ width: 286px; color: #111111; top: 20px; left: 20px; font-size: 24px; }
+.game_settings{ position: absolute; top: 100px; left: 10px; width: 316px; height: 70%; }
+.exit-text, .debug-text {
+  position: absolute; font-size: 14px; color: rgb(255, 255, 255);
+  background-color: rgba(0,0,0,0.8); padding: 5px;
+}
+.exit-text { top: 100px; left: 10px; }
+.debug-text { lines:5; bottom: 10px; left: 10px; color: #0f0; white-space: pre-wrap; width: 320px; }
+.option-picker {
+  position: absolute; bottom: 100px; left: 33px; width: 80%; height: 180px;
+  font-size: 18px; color: rgb(255, 255, 255); selected-font-size: 20px; selected-color: #00b7ff;
+  selected-background-color: rgba(0, 153, 255, 0.8); background-color: rgba(27, 27, 27, 0.6);
+  border: 2px solid #000000; border-radius: 10px; z-index: 15;
+}
+.txt-text {
+  position: absolute; bottom: 20px; left: 18px; width: 300px; 
+   color: #fff; box-sizing: border-box;
+  white-space: pre-wrap; text-shadow: 1px 1px 2px #000;
+}
+.warp-confirm {
+  position: absolute; top: 0; left: 0; width: 336px; height: 480px;
+  background-color: rgba(0,0,0,0.8); z-index: 100;
+  justify-content: center; align-items: center;
+}
+.warp-box {
+  width: 280px; background-color: #222; border: 2px solid #fff;
+  border-radius: 10px; padding: 20px; flex-direction: column; align-items: center;
+}
+.warp-title { color: #fff; font-size: 20px; margin-bottom: 20px; text-align: center; }
+.warp-buttons { flex-direction: row; justify-content: space-around; width: 100%; }
+.warp-btn { width: 100px; height: 40px; border-radius: 5px; font-size: 18px; color: #fff; }
+.warp-btn.yes { background-color: #4CAF50; }
+.warp-btn.no { background-color: #f44336; }
+
+/* 动画关键帧 */
 @keyframes reset-x { 0% { transform: translateX(0px); } 100% { transform: translateX(0px); } }
 .anim-reset-x { animation-name: reset-x; animation-duration: 10ms; animation-iteration-count: 1; animation-fill-mode: none; }
 @keyframes reset-y { 0% { transform: translateY(0px); } 100% { transform: translateY(0px); } }
@@ -1101,49 +1403,4 @@ async executeCommand(cmd, commands, nextIndex) {
 .bg-anim-shake-up { animation-name: bg-shake-up; animation-duration: 75ms; animation-timing-function: linear; animation-iteration-count: 1; animation-fill-mode: none; }
 @keyframes bg-shake-down { 0% { transform: translateY(60px); } 100% { transform: translateY(0px); } }
 .bg-anim-shake-down { animation-name: bg-shake-down; animation-duration: 75ms; animation-timing-function: linear; animation-iteration-count: 1; animation-fill-mode: none; }
-.slider_r, .slider_g, .slider_b { left: 30px; margin-top: 20px; margin-bottom: 20px; padding-left: 0; padding-right: 0; }
-.testt{ width: 286px; color: #111111; top: 20px; left: 20px; font-size: 24px; }
-.set_txt { position: absolute; top: 0px; right: 0px; font-size: 36px; color: #111111;}
-.is_debug, .typing-switch-text, .auto-next-text { color: #111111; top: 20px; left: 20px; font-size: 24px; }
-.debug_switch, .typing-switch, .auto-next-switch { top: 20px; left: 20px; }
-.goback_btn, .exit_btn, .save-btn, .load-btn {
-  color: #000000be; background-color: rgba(255, 255, 255, 0.788); font-size: 24px;
-  object-fit: none; position: absolute; top: 20px; width: 64px; height: 64px;
-}
-.exit_btn { left: 20px; }
-.goback_btn { left: 97px; }
-.save-btn { right: 20px; z-index: 10; }
-.load-btn { right: 97px; z-index: 10; }
-.option-picker {
-  position: absolute; bottom: 100px; left: 33px; width: 80%; height: 180px;
-  font-size: 24px; color: rgb(255, 255, 255); selected-font-size: 28px; selected-color: #00b7ff;
-  selected-background-color: rgba(0, 153, 255, 0.8); background-color: rgba(27, 27, 27, 0.6);
-  border: 2px solid #000000; border-radius: 10px; z-index: 15;
-}
-.txt-text {
-  position: absolute; bottom: 20px; left: 18px; width: 300px; 
-   color: #fff; box-sizing: border-box;
-  white-space: pre-wrap; text-shadow: 1px 1px 2px #000;
-}
-.game_settings{ position: absolute; top: 100px; left: 10px; width: 316px; height: 70%; }
-.exit-text, .debug-text {
-  position: absolute; font-size: 14px; color: rgb(255, 255, 255);
-  background-color: rgba(0,0,0,0.8); padding: 5px;
-}
-.exit-text { top: 100px; left: 10px; }
-.debug-text { lines:5; bottom: 10px; left: 10px; color: #0f0; white-space: pre-wrap; width: 320px; }
-.warp-confirm {
-  position: absolute; top: 0; left: 0; width: 336px; height: 480px;
-  background-color: rgba(0,0,0,0.8); z-index: 100;
-  justify-content: center; align-items: center;
-}
-.warp-box {
-  width: 280px; background-color: #222; border: 2px solid #fff;
-  border-radius: 10px; padding: 20px; flex-direction: column; align-items: center;
-}
-.warp-title { color: #fff; font-size: 20px; margin-bottom: 20px; text-align: center; }
-.warp-buttons { flex-direction: row; justify-content: space-around; width: 100%; }
-.warp-btn { width: 100px; height: 40px; border-radius: 5px; font-size: 18px; color: #fff; }
-.warp-btn.yes { background-color: #4CAF50; }
-.warp-btn.no { background-color: #f44336; }
 </style>

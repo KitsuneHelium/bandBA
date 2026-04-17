@@ -28,7 +28,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/yuuka/yuuka_spr_02.png"
+          "id": "yuuka_new",
+          "face": 0
         }
       },
       {
@@ -44,7 +45,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+          "id": "lianjian_new",
+          "face": 0
         }
       },
       {
@@ -60,7 +62,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/yuuka/yuuka_spr_00.png"
+          "id": "yuuka_new",
+          "face": 0
         }
       },
       {
@@ -76,7 +79,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/lianjian/hasumi_spr_02.png"
+          "id": "lianjian_new",
+          "face": 0
         }
       },
       {
@@ -128,7 +132,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/yuuka/yuuka_spr_05.png"
+          "id": "yuuka_new",
+          "face": 4
         }
       },
       {

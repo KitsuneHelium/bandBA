@@ -28,7 +28,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/lianjian/hasumi_spr_06.png"
+          "id": "lianjian_new",
+          "face": 5
         }
       },
       {
@@ -44,7 +45,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/yuuka/yuuka_spr_05.png"
+          "id": "yuuka_new",
+          "face": 4
         }
       },
       {
@@ -74,15 +76,15 @@
         "type": "wait"
       },
       {
-        "type": "bg",
-        "params": {
-          "path": "/common/gaming/bg/start/BG_Black.jpg"
-        }
-      },
-      {
         "type": "chara",
         "params": {
           "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
         }
       },
       {
@@ -127,15 +129,15 @@
         "type": "wait"
       },
       {
-        "type": "bg",
-        "params": {
-          "path": "/common/gaming/bg/start/BG_Black.jpg"
-        }
-      },
-      {
         "type": "chara",
         "params": {
           "path": "/common/empty.png"
+        }
+      },
+      {
+        "type": "bg",
+        "params": {
+          "path": "/common/gaming/bg/start/BG_Black.jpg"
         }
       },
       {
@@ -150,7 +152,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/yuuka/yuuka_spr_03.png"
+          "id": "yuuka_new",
+          "face": 2
         }
       },
       {
@@ -166,7 +169,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+          "id": "lianjian_new",
+          "face": 0
         }
       },
       {
@@ -376,7 +380,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_00.png"
+          "id": "rin_new",
+          "face": 0
         }
       },
       {
@@ -398,7 +403,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_05.png"
+          "id": "rin_new",
+          "face": 1
         }
       },
       {
@@ -407,6 +413,9 @@
           "speaker": "凛",
           "content": "……？发生什么事了吗？"
         }
+      },
+      {
+        "type": "wait"
       },
       {
         "type": "select",
@@ -424,7 +433,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_00.png"
+          "id": "rin_new",
+          "face": 0
         }
       },
       {
@@ -440,7 +450,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_03.png"
+          "id": "rin_new",
+          "face": 1
         }
       },
       {
@@ -509,15 +520,16 @@
     ],
     "label_5": [
       {
-        "type": "chara",
-        "params": {
-          "path": "/common/chara/rin/rin_spr_00.png"
-        }
-      },
-      {
         "type": "bg",
         "params": {
           "path": "/common/gaming/bg/shale/BG_CraftChamber_Night.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "rin_new",
+          "face": 0
         }
       },
       {
@@ -543,7 +555,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_06.png"
+          "id": "rin_new",
+          "face": 2
         }
       },
       {
@@ -569,7 +582,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_00.png"
+          "id": "rin_new",
+          "face": 0
         }
       },
       {
@@ -604,6 +618,9 @@
           "speaker": "",
           "content": "……"
         }
+      },
+      {
+        "type": "wait"
       },
       {
         "type": "select",
@@ -897,7 +914,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_23.png"
+          "id": "arona_new",
+          "face": 23
         }
       },
       {
@@ -919,7 +937,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_26.png"
+          "id": "arona_new",
+          "face": 26
         }
       },
       {
@@ -935,7 +954,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_04.png"
+          "id": "arona_new",
+          "face": 4
         }
       },
       {
@@ -951,7 +971,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_16.png"
+          "id": "arona_new",
+          "face": 16
         }
       },
       {
@@ -973,7 +994,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_28.png"
+          "id": "arona_new",
+          "face": 28
         }
       },
       {
@@ -995,7 +1017,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_16.png"
+          "id": "arona_new",
+          "face": 16
         }
       },
       {
@@ -1028,7 +1051,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_28.png"
+          "id": "arona_new",
+          "face": 28
         }
       },
       {
@@ -1050,7 +1074,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_18.png"
+          "id": "arona_new",
+          "face": 18
         }
       },
       {
@@ -1066,7 +1091,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_00.png"
+          "id": "arona_new",
+          "face": 0
         }
       },
       {
@@ -1112,7 +1138,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_11.png"
+          "id": "arona_new",
+          "face": 11
         }
       },
       {
@@ -1144,7 +1171,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_16.png"
+          "id": "arona_new",
+          "face": 16
         }
       },
       {
@@ -1173,7 +1201,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_11.png"
+          "id": "arona_new",
+          "face": 11
         }
       },
       {
@@ -1189,7 +1218,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_99.png"
+          "id": "arona_new",
+          "face": 33
         }
       },
       {
@@ -1215,7 +1245,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_03.png"
+          "id": "arona_new",
+          "face": 3
         }
       },
       {
@@ -1231,7 +1262,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_00.png"
+          "id": "arona_new",
+          "face": 0
         }
       },
       {
@@ -1257,7 +1289,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_03.png"
+          "id": "arona_new",
+          "face": 3
         }
       },
       {
@@ -1424,7 +1457,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_11.png"
+          "id": "arona_new",
+          "face": 11
         }
       },
       {
@@ -1446,7 +1480,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_04.png"
+          "id": "arona_new",
+          "face": 4
         }
       },
       {
@@ -1468,7 +1503,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_28.png"
+          "id": "arona_new",
+          "face": 28
         }
       },
       {
@@ -1484,7 +1520,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_18.png"
+          "id": "arona_new",
+          "face": 18
         }
       },
       {
@@ -1500,7 +1537,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_28.png"
+          "id": "arona_new",
+          "face": 28
         }
       },
       {
@@ -1522,7 +1560,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_06.png"
+          "id": "arona_new",
+          "face": 6
         }
       },
       {
@@ -1538,7 +1577,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_18.png"
+          "id": "arona_new",
+          "face": 18
         }
       },
       {
@@ -1573,7 +1613,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_06.png"
+          "id": "arona_new",
+          "face": 6
         }
       },
       {
@@ -1620,7 +1661,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_99.png"
+          "id": "arona_new",
+          "face": 33
         }
       },
       {
@@ -1636,7 +1678,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_31.png"
+          "id": "arona_new",
+          "face": 31
         }
       },
       {
@@ -1695,7 +1738,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_03.png"
+          "id": "arona_new",
+          "face": 3
         }
       },
       {
@@ -1780,7 +1824,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_03.png"
+          "id": "arona_new",
+          "face": 3
         }
       },
       {
@@ -1796,7 +1841,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_22.png"
+          "id": "arona_new",
+          "face": 22
         }
       },
       {
@@ -1812,7 +1858,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_03.png"
+          "id": "arona_new",
+          "face": 3
         }
       },
       {
@@ -1828,7 +1875,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_25.png"
+          "id": "arona_new",
+          "face": 25
         }
       },
       {
@@ -1857,7 +1905,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_02.png"
+          "id": "arona_new",
+          "face": 2
         }
       },
       {
@@ -1873,7 +1922,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_20.png"
+          "id": "arona_new",
+          "face": 20
         }
       },
       {
@@ -1911,7 +1961,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_00.png"
+          "id": "rin_new",
+          "face": 0
         }
       },
       {
@@ -1927,7 +1978,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_03.png"
+          "id": "rin_new",
+          "face": 0
         }
       },
       {
@@ -1973,7 +2025,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_00.png"
+          "id": "rin_new",
+          "face": 0
         }
       },
       {
@@ -1989,7 +2042,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_03.png"
+          "id": "rin_new",
+          "face": 0
         }
       },
       {
@@ -2058,6 +2112,9 @@
         }
       },
       {
+        "type": "wait"
+      },
+      {
         "type": "select",
         "params": {
           "options": [
@@ -2073,7 +2130,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_00.png"
+          "id": "rin_new",
+          "face": 0
         }
       },
       {
@@ -2119,7 +2177,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_06.png"
+          "id": "rin_new",
+          "face": 2
         }
       },
       {
@@ -2155,7 +2214,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/rin/rin_spr_03.png"
+          "id": "rin_new",
+          "face": 0
         }
       },
       {
@@ -2221,15 +2281,16 @@
         "type": "wait"
       },
       {
-        "type": "chara",
-        "params": {
-          "path": "/common/chara/yuuka/yuuka_spr_00.png"
-        }
-      },
-      {
         "type": "bg",
         "params": {
           "path": "/common/gaming/bg/BG_BuildingFrontGate.jpg"
+        }
+      },
+      {
+        "type": "chara",
+        "params": {
+          "id": "yuuka_new",
+          "face": 0
         }
       },
       {
@@ -2245,7 +2306,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/lianjian/hasumi_spr_00.png"
+          "id": "lianjian_new",
+          "face": 0
         }
       },
       {
@@ -2271,7 +2333,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/yuuka/yuuka_spr_07.png"
+          "id": "yuuka_new",
+          "face": 6
         }
       },
       {
@@ -2300,7 +2363,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/lianjian/hasumi_spr_03.png"
+          "id": "lianjian_2",
+          "face": 1
         }
       },
       {
@@ -2316,7 +2380,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/qianxia/chinatsu_spr_07.png"
+          "id": "qianxia_new",
+          "face": 6
         }
       },
       {
@@ -2332,7 +2397,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/yuuka/yuuka_spr_07.png"
+          "id": "yuuka_new",
+          "face": 6
         }
       },
       {
@@ -2341,6 +2407,9 @@
           "speaker": "优香",
           "content": "如果您来千禧年科技的话，我们应该还能见面吧？那回头见了，老师！"
         }
+      },
+      {
+        "type": "wait"
       },
       {
         "type": "select",
@@ -2449,7 +2518,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_13.png"
+          "id": "arona_new",
+          "face": 13
         }
       },
       {
@@ -2478,7 +2548,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_11.png"
+          "id": "arona_new",
+          "face": 11
         }
       },
       {
@@ -2494,7 +2565,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_25.png"
+          "id": "arona_new",
+          "face": 25
         }
       },
       {
@@ -2520,7 +2592,8 @@
       {
         "type": "chara",
         "params": {
-          "path": "/common/chara/arona/arona_spr_03.png"
+          "id": "arona_new",
+          "face": 3
         }
       },
       {
@@ -2547,7 +2620,7 @@
         "type": "text",
         "params": {
           "speaker": "",
-          "content": ""
+          "content": "未完待续"
         }
       },
       {
@@ -2564,6 +2637,12 @@
       },
       {
         "type": "wait"
+      },
+      {
+        "type": "warp",
+        "params": {
+          "path": "/common/GAMEDATA/gamedata4.txt"
+        }
       }
     ]
   }

@@ -1,5 +1,10 @@
 <template>
   <div class="page">
+    <image 
+        class='title-img'
+        src="/common/bg.jpg"
+        style="opacity: {{bgO}};"
+      />
     <input class="btn" type="button" onclick="exit" value="<"/>
     <text class="title" style="color: black;margin-bottom: 10px;margin-top: 10px;">CG鉴赏</text>
     <div class="scroll-container">
@@ -22,10 +27,19 @@
 <script>
 import router from "@system.router"
   export default {
+    data:{
+      bgO:0,
+    },
+    onShow() {
+      this.bgO = 1;
+    },
+    back() {
+      this.bgO = 0;
+      router.back();
+    },
     exit(){
-      router.replace({
-        uri: "pages/main"
-      })
+      this.bgO = 0;
+      router.back();
     }
   }
 </script>
@@ -52,8 +66,17 @@ import router from "@system.router"
   border-radius: 36px;
   margin-bottom: 10px;
 }
+
+.title-img {
+  width: 336px; height: 480px; object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* 核心：只需要这一行！自动产生透明度过渡动画 */
+  transition: opacity 200ms ease-out;
+}
+
   .page {
-    background-image: url(/common/bg.jpg);
     background-color: black;
     flex-direction: column;
   }
@@ -79,13 +102,5 @@ import router from "@system.router"
   .swiper {
     width: 336px;
     height: 350px;
-  }
-
-  .color-1 {
-    background-color: cadetblue;
-  }
-
-  .color-2 {
-    background-color: orangered;
   }
 </style>

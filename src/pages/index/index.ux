@@ -2,8 +2,6 @@
   <div class="load">
     <image src="/common/main_page_img/ICON2.png" style="width: 336px;object-fit:none;"/>
     <text class="title" style="font-size:20px;">Powered by {{ title }}</text>
-    <!-- 点击跳转详情页 -->
-    <!--<input class="btn" type="button" value="跳转到详情页" onclick="routeDetail" /> -->
   </div>
 </template>
 
@@ -52,13 +50,4 @@ onUnload() {
   text-align: center;
 }
 
-.btn {
-  width: 200px;
-  height: 40px;
-  margin-top: 20px;
-  border-radius: 5px;
-  background-color: #09ba07;
-  font-size: 20px;
-  color: #ffffff;
-}
 </style>

@@ -1,0 +1,417 @@
+<template>
+  <div class="page">
+    <image 
+        class='title-img'
+        src="/common/bg.jpg"
+        style="opacity: {{bgO}};"
+      />
+    <stack class='stack'>
+      <div class='blank'>
+        <scroll scroll-y="true" style="flex-direction: column;" bounces="true">
+          <text class='testt' style="margin-bottom:20px;font-size:32px;">通用设置</text>
+          <div class='sw-block'>
+            <text class='is_debug'>调试日志</text>
+            <switch checked="{{config.debugMode}}" class="debug_switch" @change="toggleDebugMode"></switch>
+          </div>
+          <div class='sw-block'>
+            <text class='typing-switch-text'>打字机效果</text>
+            <switch checked="{{config.enableTyping}}" class="typing-switch" @change="toggleTypingSwitch"></switch>
+          </div>
+          <div class='sw-block'>
+            <text class='auto-next-text'>自动播放</text>
+            <switch checked="{{config.autoNext}}" class="auto-next-switch" @change="toggleAutoNextSwitch"></switch>
+          </div>
+          <div style="width:100px;height:30px"> </div>
+          
+          <text class='testt' style="margin-bottom:20px;font-size:32px;">字体控制</text>
+          <text class='testt' style="margin-bottom:20px;font-size: {{color_r}}px; ">字体大小</text>
+          <slider class="slider_r" style="selected-color: rgb(0, 128, 225);" min="20" max="50" step="1" value="{{ color_r }}" onchange="r"></slider>
+          
+          <text class='testt' style="margin-bottom:20px">打字机速度</text>
+          <text class='testt' style="margin-bottom:20px">(每{{config.typingSpeed}}ms出现一个字)</text>
+          <slider class="slider_g" style="selected-color: rgb(0, 128, 255);" min="10" max="100" step="10" value="{{ config.typingSpeed }}" onchange="g"></slider>
+          <div style="width:100px;height:30px"> </div>
+          <text class='testt' style="margin-bottom:20px;font-size:32px;">数据管理</text>
+          <input class="func-btn" onclick="resetSave" value='重置存档' />
+          <input class="func-btn" onclick="resetConfig" value='重置设置' />
+          <input class="func-btn" onclick="resetChapter" value='重置章节' />
+          <input class="func-btn scan-btn" onclick="scanFiles" value='扫描文件' />
+          
+          <text class='testt' style="margin-bottom:20px">目前只有这一些...</text>
+        </scroll>
+      </div>
+      
+      <text class="debug-text" show="{{config.debugMode}}">
+调试信息：
+{{debugInfo}}
+      </text>
+      
+      <!-- 操作按钮 -->
+      <text class="title" style="color: black;margin-bottom: 10px;margin-top: 10px;">设置</text>
+      <input class="exit_btn" onclick="backb" value='<'/>
+    </stack>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+import file from '@system.file'
+import prompt from '@system.prompt'
+
+export default {
+  data: {
+    bgO:0,
+    config: {
+      debugMode: false,
+      enableTyping: true,
+      autoNext: false,
+      typingSpeed: 50,
+      fontSize: 20
+    },
+    debugInfo: "设置页面已加载",
+    color_r: 20,
+    
+    configFileName: "VGE/shared/userconfig.txt",
+    saveFileName: "VGE/shared/userdata.txt",
+    chapterFileName: "VGE/shared/userchapter.txt",
+    fileList: []
+  },
+  onShow() {
+    this.bgO = 1;
+  },
+  onReady() {
+    this.initFiles();
+    this.loadConfig();
+  },
+  back() {
+    return;
+  },
+  // ==================== 核心功能实现 ====================
+  
+  async initFiles() {
+    try {
+      // 初始化配置文件
+      try {
+        await this.readDataFile(this.configFileName);
+      } catch (e) {
+        console.log("[INIT] 配置文件缺失，创建默认");
+        await this.saveConfig();
+      }
+
+      // 初始化存档文件
+      try {
+        await this.readDataFile(this.saveFileName);
+      } catch (e) {
+        console.log("[INIT] 存档文件缺失，创建默认");
+        await this.writeDefaultSave();
+      }
+
+      // 初始化章节文件
+      try {
+        await this.readDataFile(this.chapterFileName);
+      } catch (e) {
+        console.log("[INIT] 章节文件缺失，创建空文件");
+        await this.writeDataFile(this.chapterFileName, "");
+      }
+
+      this.debugInfo = "文件初始化完成";
+    } catch (e) {
+      this.debugInfo = "初始化失败: " + e.message;
+    }
+  },
+
+  /**
+   * 1. 重置存档
+   */
+  async resetSave() {
+    try {
+      await this.writeDefaultSave();
+      await this.writeDataFile(this.chapterFileName, "");
+      this.alert("存档已重置为初始状态");
+      this.debugInfo = "存档重置成功";
+    } catch (e) {
+      this.alert("重置存档失败: " + e.message);
+      this.debugInfo = "重置存档失败: " + e.message;
+    }
+  },
+
+  /**
+   * 2. 重置设置
+   */
+  async resetConfig() {
+    try {
+      this.config = {
+        debugMode: false,
+        enableTyping: true,
+        autoNext: false,
+        typingSpeed: 50,
+        fontSize: 20
+      };
+      this.color_r = this.config.fontSize;
+      await this.saveConfig();
+      this.alert("设置已重置为默认值");
+      this.debugInfo = "设置重置成功";
+    } catch (e) {
+      this.alert("重置设置失败: " + e.message);
+      this.debugInfo = "重置设置失败: " + e.message;
+    }
+  },
+
+  /**
+   * 3. 单独重置章节
+   */
+  async resetChapter() {
+    try {
+      await this.writeDataFile(this.chapterFileName, "");
+      this.alert("章节记录已清空");
+      this.debugInfo = "章节记录重置成功";
+    } catch (e) {
+      this.alert("重置章节失败: " + e.message);
+      this.debugInfo = "重置章节失败: " + e.message;
+    }
+  },
+
+  /**
+   * 4. 扫描目录
+   */
+  scanFiles() {
+    const that = this;
+    file.list({
+      uri: "internal://files/VGE/shared/",
+      success: function(ret) {
+        that.fileList = ret.fileList || [];
+        const fileInfo = that.fileList.map(item => {
+          return `${item.name} (${item.type === '文件' ? '文件' : '文件夹'})`;
+        }).join('\n');
+        that.debugInfo = `扫描完成 (共${that.fileList.length}项):\n${fileInfo || '目录为空'}`;
+        that.alert(`扫描完成，共${that.fileList.length}项`);
+      },
+      fail: function(data, code) {
+        that.debugInfo = "扫描失败: " + code;
+        that.alert("扫描目录失败");
+      }
+    });
+  },
+
+  // ==================== 辅助方法 ====================
+
+  async writeDefaultSave() {
+    const defaultSave = {
+      version: "1.0",
+      timestamp: 0,
+      title: "初始存档",
+      core: {
+        label: "start",
+        index: 0,
+        globalVars: {},
+        scene: {
+          bg: "/common/bg.jpg",
+          chara: "/common/empty.png",
+          speaker: "",
+          content: "点击屏幕开始..."
+        }
+      },
+      historySnapshot: []
+    };
+    await this.writeDataFile(this.saveFileName, JSON.stringify(defaultSave));
+  },
+
+  readDataFile(fileName) {
+    return new Promise((resolve, reject) => {
+      const path = "internal://files/" + fileName;
+      file.readText({
+        uri: path,
+        encoding: "utf8",
+        success: (res) => resolve(res.text),
+        fail: (err) => reject(err)
+      });
+    });
+  },
+
+  writeDataFile(fileName, content) {
+    return new Promise((resolve, reject) => {
+      const path = "internal://files/" + fileName;
+      file.writeText({
+        uri: path,
+        text: content,
+        encoding: "utf8",
+        success: () => resolve(),
+        fail: (err) => reject(err)
+      });
+    });
+  },
+
+  async loadConfig() {
+    try {
+      const text = await this.readDataFile(this.configFileName);
+      const cfg = JSON.parse(text);
+      this.config = { ...this.config, ...cfg };
+      this.color_r = this.config.fontSize;
+    } catch (e) {
+      console.log("[SETTINGS] 无配置文件，使用默认");
+    }
+  },
+
+  async saveConfig() {
+    try {
+      await this.writeDataFile(this.configFileName, JSON.stringify(this.config));
+    } catch (e) {
+      console.log("[SETTINGS] 保存配置失败");
+    }
+  },
+
+  toggleDebugMode(e) {
+    this.config.debugMode = e.checked;
+    this.saveConfig();
+  },
+  
+  toggleTypingSwitch(e) {
+    this.config.enableTyping = e.checked;
+    this.saveConfig();
+  },
+  
+  toggleAutoNextSwitch(e) {
+    this.config.autoNext = e.checked;
+    this.saveConfig();
+  },
+
+  r(e) { 
+    this.color_r = e.progress;
+    this.config.fontSize = this.color_r;
+    this.saveConfig();
+  },
+  
+  g(e) { 
+    this.config.typingSpeed = e.progress;
+    this.saveConfig();
+  },
+
+  backb() {
+    this.bgO = 0;
+    router.back();
+  },
+
+  alert(msg) {
+    prompt.showToast({ message: msg, duration: 2000 });
+  }
+};
+</script>
+
+<style>
+.title-img {
+  width: 336px; height: 480px; object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* 核心：只需要这一行！自动产生透明度过渡动画 */
+  transition: opacity 200ms ease-out;
+}
+.page {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+.title {
+  position: absolute;
+  top:15px;
+  right: 20px;
+  font-size: 36px;
+  font-weight: bold;
+  align-self: flex-start;
+}
+.stack {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.blank {
+  position: absolute;
+  top:90px;
+  left: 18px;
+  border-radius: 24px;
+  height: 372px;
+  width: 300px;
+  flex-direction: column;
+  background-color:rgba(255, 255, 255, 0.6);
+}
+
+/* ========== 仅修改以下开关相关样式 ========== */
+.is_debug, .typing-switch-text, .auto-next-text { 
+  color: #111111;  
+  font-size: 24px; 
+}
+
+.debug_switch, .typing-switch, .auto-next-switch { 
+  right: 6px;
+}
+
+.sw-block {
+  display: flex;
+  justify-content: space-between; /* 文字左 开关右 */
+  align-items: center; /* 垂直居中 */
+  background-color: #ffffff00;
+  width: 300px;
+  height: 100px;
+  padding: 0 20px; /* 左右内边距 */
+  box-sizing: border-box;
+}
+/* ========== 以上为仅修改部分 ========== */
+
+.slider_r, .slider_g { 
+  width: 260px;
+  left: 30px; 
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+  padding-left: 0; 
+  padding-right: 0; 
+}
+.testt{ 
+  width: 286px; 
+  color: #111111; 
+  top: 20px; 
+  left: 20px; 
+  font-size: 24px; 
+}
+.debug-text {
+  position: absolute; 
+  font-size: 14px; 
+  color: #0f0; 
+  background-color: rgba(0,0,0,0.8); 
+  padding: 5px;
+  lines:5; 
+  bottom: 10px; 
+  left: 10px; 
+  white-space: pre-wrap; 
+  width: 320px; 
+}
+.exit_btn{
+  top:10px;
+  left:10px;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  font-size: 26px;
+  margin: 5px;
+  background-color: #ffffffa4;
+  color: #000000;
+  border-radius: 36px;
+  margin-bottom: 10px;
+}
+.func-btn {
+  width: 260px;
+  height: 50px;
+  font-size: 20px;
+  margin: 10px 20px;
+  background-color: #ff0000a4;
+  color: #ffffffe8;
+  border-radius: 10px;
+}
+
+.scan-btn {
+  background-color: #ffffffa4;
+  color: #000000e8;
+}
+</style>
